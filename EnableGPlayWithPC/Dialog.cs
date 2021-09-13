@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
@@ -51,18 +52,18 @@ namespace EnableGPlayWithPC
 
             return dialog.Show() == TaskDialogResult.Ok ? true : false;
         }
-      
-        internal static TaskDialogResult ShowQuestion(string instruction, string desc, IntPtr handle)
+
+        internal static bool ShowQuestion(string instruction, string desc, IntPtr handle)
         {
             var dialog = new TaskDialog();
             dialog.Caption = "Enable GPlay With PC";
             dialog.InstructionText = instruction;
             dialog.Text = desc;
-  
+
             dialog.Icon = TaskDialogStandardIcon.None;
             dialog.OwnerWindowHandle = handle;
             dialog.StandardButtons = TaskDialogStandardButtons.Ok | TaskDialogStandardButtons.Cancel;
-            return dialog.Show();
+            return dialog.Show() == TaskDialogResult.Ok ? true : false;
         }
     }
 }

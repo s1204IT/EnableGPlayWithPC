@@ -7,7 +7,7 @@
         internal static string GSF = "com.google.android.gsf";
         internal static string GSFLogin = "com.google.android.gsf.login";
 
-        internal static string[] PackageNames = new string[]
+        internal static string[] Package = new string[]
         {
             GMS,
             GSFLogin,

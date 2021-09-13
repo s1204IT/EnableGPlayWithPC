@@ -123,19 +123,13 @@
   <data name="Continue" xml:space="preserve">
     <value>続行</value>
   </data>
-  <data name="Dialog_404_Desc" xml:space="preserve">
+  <data name="Dialog_Process_Error_File404" xml:space="preserve">
     <value>{0} が見つかりません。
 そのファイルが存在するかどうか確認してください。</value>
   </data>
-  <data name="Dialog_404_Inst" xml:space="preserve">
-    <value>{0} が見つかりません</value>
-  </data>
-  <data name="Dialog_Adb404_Desc" xml:space="preserve">
+  <data name="Dialog_Process_Error_Adb404" xml:space="preserve">
     <value>adb.exe が見つかりません。
 adb.exe が存在するかどうか確認してください。</value>
-  </data>
-  <data name="Dialog_Adb404_Inst" xml:space="preserve">
-    <value>adb.exe が見つかりません</value>
   </data>
   <data name="Dialog_PermNotGranted_Desc" xml:space="preserve">
     <value>{1} に権限 "{0}" を付与することができませんでした。
@@ -153,7 +147,7 @@ adb.exe が存在するかどうか確認してください。</value>
   </data>
   <data name="Dialog_Successed_Desc" xml:space="preserve">
     <value>Google の機能は有効化されました！
-引き続き端末を使用することができます。</value>
+デバイスは再起動中です。再起動後使用可能になります。</value>
   </data>
   <data name="Dialog_Successed_Inst" xml:space="preserve">
     <value>成功しました！</value>
@@ -165,12 +159,12 @@ adb.exe が存在するかどうか確認してください。</value>
   <data name="Dialog_TooManyDevices_Inst" xml:space="preserve">
     <value>接続されているデバイスが多すぎます</value>
   </data>
-  <data name="Dialog_UnableToConnect_Desc" xml:space="preserve">
-    <value>デバイスとの接続に失敗しました。
-接続を確認してください。</value>
+  <data name="Dialog_Process_Error_Unknown" xml:space="preserve">
+    <value>処理中にエラーが発生しました。
+何らかのエラーが発生しました。詳しくはアプリケーション開発者にお問い合わせください。</value>
   </data>
-  <data name="Dialog_UnableToConnect_Inst" xml:space="preserve">
-    <value>デバイスとの接続に失敗しました。</value>
+  <data name="Dialog_Process_Error_Title" xml:space="preserve">
+    <value>処理エラー</value>
   </data>
   <data name="FileSelector_Title" xml:space="preserve">
     <value>.apk ファイルを開く</value>
@@ -186,5 +180,37 @@ adb.exe が存在するかどうか確認してください。</value>
   </data>
   <data name="NotGranted_ShowDetail" xml:space="preserve">
     <value>詳細情報を表示</value>
+  </data>
+  <data name="Dialog_Process_Error_Adb" xml:space="preserve">
+    <value>何らかのエラーが発生したためデバイスと通信できませんでした。
+
+以下を確認してください：
+・デバイスの接続
+・このPCからのUSBデバッグの許可
+確認してから再実行してください。
+
+取得したデバイス名：{0}</value>
+  </data>
+  <data name="Dialog_Process_Error_In" xml:space="preserve">
+    <value>処理中にエラーが発生しました。
+アプリケーションをインストールできませんでした。</value>
+  </data>
+  <data name="AdbPath" xml:space="preserve">
+    <value>adb\adb.exe</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>バージョン : {0} / Kobold Ver.
+
+MIT License
+
+Copyright(c) 2020 AioiLight
+
+The above copyright notice and this permission notice are included in all copies or most of the Software.</value>
+  </data>
+  <data name="FileSelector_Extension" xml:space="preserve">
+    <value>.apk</value>
+  </data>
+  <data name="Information_Title" xml:space="preserve">
+    <value>バージョン情報</value>
   </data>
 </root>

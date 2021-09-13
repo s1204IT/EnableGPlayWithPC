@@ -127,16 +127,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Label_Vending.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 34</value>
+    <value>47, 79</value>
   </data>
   <data name="Label_Vending.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 20</value>
+    <value>82, 34</value>
   </data>
   <data name="Label_Vending.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="Label_Vending.Text" xml:space="preserve">
-    <value>Google Play:</value>
+    <value>Google Play
+Store</value>
   </data>
   <data name="Label_Vending.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -151,7 +152,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_Vending.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="Label_GMS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -160,17 +161,17 @@
     <value>NoControl</value>
   </data>
   <data name="Label_GMS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 64</value>
+    <value>32, 128</value>
   </data>
   <data name="Label_GMS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 40</value>
+    <value>97, 34</value>
   </data>
   <data name="Label_GMS.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="Label_GMS.Text" xml:space="preserve">
     <value>Google Mobile
-Service(GMS):</value>
+Service(GMS)</value>
   </data>
   <data name="Label_GMS.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -185,7 +186,7 @@ Service(GMS):</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GMS.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="Label_GSF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -194,17 +195,17 @@ Service(GMS):</value>
     <value>NoControl</value>
   </data>
   <data name="Label_GSF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 114</value>
+    <value>21, 175</value>
   </data>
   <data name="Label_GSF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 40</value>
+    <value>108, 34</value>
   </data>
   <data name="Label_GSF.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="Label_GSF.Text" xml:space="preserve">
     <value>Google Services
-Framework:</value>
+Framework</value>
   </data>
   <data name="Label_GSF.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -219,7 +220,7 @@ Framework:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GSF.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="Label_GSFLogin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -228,17 +229,20 @@ Framework:</value>
     <value>NoControl</value>
   </data>
   <data name="Label_GSFLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 164</value>
+    <value>39, 223</value>
+  </data>
+  <data name="Label_GSFLogin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="Label_GSFLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 40</value>
+    <value>90, 34</value>
   </data>
   <data name="Label_GSFLogin.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="Label_GSFLogin.Text" xml:space="preserve">
     <value>Google Login
-Service:</value>
+Service</value>
   </data>
   <data name="Label_GSFLogin.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -253,27 +257,30 @@ Service:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GSFLogin.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 244</value>
+    <value>21, 275</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>485, 60</value>
+    <value>411, 48</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>When clicked "Process", Your ChallengePad's some apps will be uninstalled.
-After that, those apps are re-installed.
-Do not touch your device until processed!!</value>
+    <value>"実行"を押すとタブレット内のGSF系のアプリが再インストールされます。
+タブレットは自動的に再起動します。
+実行している間は絶対にタブレットに触らないでください！</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -285,25 +292,37 @@ Do not touch your device until processed!!</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
+  </data>
+  <data name="Button_Process.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="Button_Process.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 15.75pt</value>
+    <value>Microsoft Sans Serif, 15.749999pt</value>
   </data>
   <data name="Button_Process.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Button_Process.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 244</value>
+    <value>591, 292</value>
+  </data>
+  <data name="Button_Process.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 7, 4, 7</value>
+  </data>
+  <data name="Button_Process.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>145, 48</value>
+  </data>
+  <data name="Button_Process.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>145, 48</value>
   </data>
   <data name="Button_Process.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 57</value>
+    <value>145, 48</value>
   </data>
   <data name="Button_Process.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
   <data name="Button_Process.Text" xml:space="preserve">
-    <value>Process</value>
+    <value>実行</value>
   </data>
   <data name="&gt;&gt;Button_Process.Name" xml:space="preserve">
     <value>Button_Process</value>
@@ -315,124 +334,19 @@ Do not touch your device until processed!!</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button_Process.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="FileSelector_GSFLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="FileSelector_GSFLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 164</value>
-  </data>
-  <data name="FileSelector_GSFLogin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
-  <data name="FileSelector_GSFLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 40</value>
-  </data>
-  <data name="FileSelector_GSFLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSFLogin.Name" xml:space="preserve">
-    <value>FileSelector_GSFLogin</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSFLogin.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSFLogin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSFLogin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="FileSelector_GSF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="FileSelector_GSF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 114</value>
-  </data>
-  <data name="FileSelector_GSF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
-  <data name="FileSelector_GSF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 40</value>
-  </data>
-  <data name="FileSelector_GSF.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSF.Name" xml:space="preserve">
-    <value>FileSelector_GSF</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSF.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSF.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GSF.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="FileSelector_GMS.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="FileSelector_GMS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 64</value>
-  </data>
-  <data name="FileSelector_GMS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
-  <data name="FileSelector_GMS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 40</value>
-  </data>
-  <data name="FileSelector_GMS.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GMS.Name" xml:space="preserve">
-    <value>FileSelector_GMS</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GMS.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GMS.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_GMS.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="FileSelector_Vending.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="FileSelector_Vending.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 14</value>
-  </data>
-  <data name="FileSelector_Vending.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
-  <data name="FileSelector_Vending.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 40</value>
-  </data>
-  <data name="FileSelector_Vending.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_Vending.Name" xml:space="preserve">
-    <value>FileSelector_Vending</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_Vending.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_Vending.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FileSelector_Vending.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="LinkLabel_Repo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="LinkLabel_Repo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LinkLabel_Repo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>413, 221</value>
+    <value>21, 323</value>
   </data>
   <data name="LinkLabel_Repo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 20</value>
+    <value>322, 17</value>
   </data>
   <data name="LinkLabel_Repo.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -450,31 +364,265 @@ Do not touch your device until processed!!</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LinkLabel_Repo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="情報XToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="情報XToolStripMenuItem.Text" xml:space="preserve">
+    <value>情報(&amp;X)</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>749, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 38</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>（注）チャレンジパッド３・NEOの場合は次を参照してください：</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 38</value>
+  </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>クリックしてください</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
+    <value>linkLabel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="FileSelector_GSFLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9.75pt</value>
+  </data>
+  <data name="FileSelector_GSFLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 223</value>
+  </data>
+  <data name="FileSelector_GSFLogin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 7, 4, 7</value>
+  </data>
+  <data name="FileSelector_GSFLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 34</value>
+  </data>
+  <data name="FileSelector_GSFLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSFLogin.Name" xml:space="preserve">
+    <value>FileSelector_GSFLogin</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSFLogin.Type" xml:space="preserve">
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSFLogin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSFLogin.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="FileSelector_GSF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9.75pt</value>
+  </data>
+  <data name="FileSelector_GSF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 175</value>
+  </data>
+  <data name="FileSelector_GSF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 7, 4, 7</value>
+  </data>
+  <data name="FileSelector_GSF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 34</value>
+  </data>
+  <data name="FileSelector_GSF.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSF.Name" xml:space="preserve">
+    <value>FileSelector_GSF</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSF.Type" xml:space="preserve">
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSF.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GSF.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="FileSelector_GMS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9.75pt</value>
+  </data>
+  <data name="FileSelector_GMS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 127</value>
+  </data>
+  <data name="FileSelector_GMS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 7, 4, 7</value>
+  </data>
+  <data name="FileSelector_GMS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 34</value>
+  </data>
+  <data name="FileSelector_GMS.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GMS.Name" xml:space="preserve">
+    <value>FileSelector_GMS</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GMS.Type" xml:space="preserve">
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GMS.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_GMS.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="FileSelector_Vending.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9.75pt</value>
+  </data>
+  <data name="FileSelector_Vending.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 79</value>
+  </data>
+  <data name="FileSelector_Vending.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 7, 4, 7</value>
+  </data>
+  <data name="FileSelector_Vending.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 34</value>
+  </data>
+  <data name="FileSelector_Vending.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_Vending.Name" xml:space="preserve">
+    <value>FileSelector_Vending</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_Vending.Type" xml:space="preserve">
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_Vending.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FileSelector_Vending.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 309</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 21</value>
+  </data>
+  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>テストモード</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
+    <value>checkBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
+    <value>8, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>749, 313</value>
+    <value>749, 356</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>Meiryo UI, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
-  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>765, 355</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>765, 355</value>
+    <value>765, 318</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Enable GPlay With PC</value>
+  </data>
+  <data name="&gt;&gt;情報XToolStripMenuItem.Name" xml:space="preserve">
+    <value>情報XToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;情報XToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>
