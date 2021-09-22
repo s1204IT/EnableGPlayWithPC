@@ -15,12 +15,14 @@
 
         internal static string[] GMS = new string[]
         {
+            "INTERACT_ACROSS_USERS",
             "READ_LOGS",
             "GET_APP_OPS_STATS"
         };
 
         internal static string[] GSF = new string[]
         {
+            "READ_LOGS",
             "DUMP",
             "WRITE_SECURE_SETTINGS",
             "INTERACT_ACROSS_USERS"

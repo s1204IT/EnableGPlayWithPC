@@ -123,11 +123,11 @@ namespace EnableGPlayWithPC
                         {
                             progressBarDialog.Message = pkg + "をアンインストール中";
                             packageManager.UninstallPackage(pkg);
-                            progressBarDialog.Value = progressBarDialog.Value + 5;
+                            progressBarDialog.Value = progressBarDialog.Value + 2;
                         }
                         catch (Exception)
                         {
-                            progressBarDialog.Value = progressBarDialog.Value + 5;
+                            progressBarDialog.Value = progressBarDialog.Value + 2;
                         }
                     }
                 }
@@ -144,7 +144,7 @@ namespace EnableGPlayWithPC
                 // それぞれインストール
                 var ip = 1;
                 process = 4;
-                progressBarDialog.Message = "インストール中 (" + ip + "/4)";
+                progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                 await Task.Delay(1000);
                 Array.ForEach(apks, apk =>
                 {
@@ -168,8 +168,34 @@ namespace EnableGPlayWithPC
                         _process.Close();
                     }
                     ip++;
-                    progressBarDialog.Message = "インストール中 (" + ip + "/4)";
+                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                     progressBarDialog.Value = progressBarDialog.Value + 10;
+                });
+
+                await Task.Delay(1000);
+                Array.ForEach(Apks.installList, apk =>
+                {
+                    if (!BenesseTabs.TARGET_MODEL.Contains(product))
+                    {
+                        packageManager.InstallPackage(apk, false);
+                    }
+                    else
+                    {
+                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " push " + apk + " /data/local/tmp/base.apk & exit");
+                        processStartInfo.CreateNoWindow = true;
+                        processStartInfo.UseShellExecute = false;
+                        Process _process = Process.Start(processStartInfo);
+                        _process.WaitForExit();
+                        _process.Close();
+                        processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " shell pm install -r -d -i \"com.android.vending\" /data/local/tmp/base.apk & exit");
+                        processStartInfo.CreateNoWindow = true;
+                        processStartInfo.UseShellExecute = false;
+                        _process = Process.Start(processStartInfo);
+                        _process.WaitForExit();
+                        _process.Close();
+                    }
+                    ip++;
+                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                 });
 
                 // Play ストアに権限付与
