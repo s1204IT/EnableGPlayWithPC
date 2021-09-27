@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -14,7 +13,6 @@ namespace EnableGPlayWithPC
 {
     public partial class Main : Form
     {
-
         public Main()
         {
             InitializeComponent();
@@ -30,11 +28,16 @@ namespace EnableGPlayWithPC
 
         private async void Button_Process_Click(object sender, EventArgs e)
         {
-            int process = 0;
             Enabled = false;
+
+            int process, ip;
             string TARGET_MODEL;
             var product = "UNKNOWN_MODEL";
             var progressBarDialog = new Progress();
+
+            ip = 0;
+            process = 0;
+
             progressBarDialog.Title = "処理中";
             progressBarDialog.Message = "初期化中";
             progressBarDialog.Value = 0;
@@ -49,19 +52,21 @@ namespace EnableGPlayWithPC
                     this.Enabled = true;
                     return;
                 }
-                progressBarDialog.Value = progressBarDialog.Value + 1;
             }
 
+            progressBarDialog.Value = progressBarDialog.Value + 5;
+
             var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
             progressBarDialog.Value = progressBarDialog.Value + 1;
 
             var adb = new AdbServer();
+
             progressBarDialog.Value = progressBarDialog.Value + 1;
 
             try
             {
                 var result = adb.StartServer(Path.Combine(appDir, Properties.Resources.AdbPath), true);
-                progressBarDialog.Value = progressBarDialog.Value + 1;
             }
             catch (Exception)
             {
@@ -72,12 +77,12 @@ namespace EnableGPlayWithPC
                 return;
             }
 
+            progressBarDialog.Value = progressBarDialog.Value + 1;
+
             try
             {
                 process = 1;
                 var device = AdbClient.Instance.GetDevices().First();
-
-                progressBarDialog.Value = progressBarDialog.Value + 1;
 
                 if (AdbClient.Instance.GetDevices().Count > 1)
                 {
@@ -88,9 +93,8 @@ namespace EnableGPlayWithPC
                     return;
                 }
                 progressBarDialog.Value = progressBarDialog.Value + 1;
-                var receiver = new ConsoleOutputReceiver();
-                progressBarDialog.Value = progressBarDialog.Value + 1;
                 process = 2;
+                var receiver = new ConsoleOutputReceiver();
                 AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.product", device, receiver);
                 product = receiver.ToString();
                 product = product.Substring(0, product.Length - 2); // 余計な改行は入れさせない
@@ -110,10 +114,10 @@ namespace EnableGPlayWithPC
                     }
                     progressBarDialog.Show();
                 }
-                progressBarDialog.Value = progressBarDialog.Value + 1;
+
                 var packageManager = new PackageManager(device);
-                progressBarDialog.Value = progressBarDialog.Value + 1;
                 process = 3;
+
                 // それぞれアンインストール
                 if (!checkBox1.Checked)
                 {
@@ -134,68 +138,67 @@ namespace EnableGPlayWithPC
                 else
                 {
                     progressBarDialog.Message = "スキップ";
-                    progressBarDialog.Value = progressBarDialog.Value + 20;
+                    progressBarDialog.Value = progressBarDialog.Value + 17;
                 }
 
                 // パスを取得
                 var apks = GetSelectedPath();
-                progressBarDialog.Value = progressBarDialog.Value + 5;
+                progressBarDialog.Value = progressBarDialog.Value + 3;
 
                 // それぞれインストール
-                var ip = 1;
                 process = 4;
-                progressBarDialog.Message = "インストール中 (" + ip + "/7)";
+                ip = 1;
                 await Task.Delay(1000);
                 Array.ForEach(apks, apk =>
                 {
+                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                     if (!BenesseTabs.TARGET_MODEL.Contains(product))
                     {
                         packageManager.InstallPackage(apk, false);
                     }
                     else
                     {
-                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " push " + apk + " /data/local/tmp/base.apk & exit");
+                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + apk + " /data/local/tmp/base.apk && exit");
                         processStartInfo.CreateNoWindow = true;
                         processStartInfo.UseShellExecute = false;
                         Process _process = Process.Start(processStartInfo);
                         _process.WaitForExit();
                         _process.Close();
-                        processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " shell pm install -r -d -i \"com.android.vending\" /data/local/tmp/base.apk & exit");
+                        processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " shell pm install -i \"com.android.vending\" /data/local/tmp/base.apk && exit");
                         processStartInfo.CreateNoWindow = true;
                         processStartInfo.UseShellExecute = false;
                         _process = Process.Start(processStartInfo);
                         _process.WaitForExit();
                         _process.Close();
                     }
-                    ip++;
-                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                     progressBarDialog.Value = progressBarDialog.Value + 10;
+                    ip++;
                 });
 
-                await Task.Delay(1000);
                 Array.ForEach(Apks.installList, apk =>
                 {
+                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                     if (!BenesseTabs.TARGET_MODEL.Contains(product))
                     {
                         packageManager.InstallPackage(apk, false);
                     }
                     else
                     {
-                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " push " + apk + " /data/local/tmp/base.apk & exit");
+                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + apk + " /data/local/tmp/base.apk && exit");
                         processStartInfo.CreateNoWindow = true;
                         processStartInfo.UseShellExecute = false;
                         Process _process = Process.Start(processStartInfo);
                         _process.WaitForExit();
                         _process.Close();
-                        processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " shell pm install -r -d -i \"com.android.vending\" /data/local/tmp/base.apk & exit");
+                        processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " shell pm install -i \"com.android.vending\" /data/local/tmp/base.apk && exit");
                         processStartInfo.CreateNoWindow = true;
                         processStartInfo.UseShellExecute = false;
                         _process = Process.Start(processStartInfo);
                         _process.WaitForExit();
                         _process.Close();
                     }
+                    progressBarDialog.Value = progressBarDialog.Value + 5;
                     ip++;
-                    progressBarDialog.Message = "インストール中 (" + ip + "/7)";
                 });
 
                 // Play ストアに権限付与
@@ -214,7 +217,7 @@ namespace EnableGPlayWithPC
                         return;
                     }
                 }
-                progressBarDialog.Value = progressBarDialog.Value + 10;
+                progressBarDialog.Value = progressBarDialog.Value + 5;
 
                 // GooglePlay開発者サービスに権限付与
                 progressBarDialog.Message = "GMSに権限を付与中";
@@ -231,9 +234,8 @@ namespace EnableGPlayWithPC
                         return;
                     }
                 }
-                progressBarDialog.Value = progressBarDialog.Value + 4;
-
-                // Google Service Frameworkに権限付与。
+                progressBarDialog.Value = progressBarDialog.Value + 5;
+                // Google Service Frameworkに権限付与
                 progressBarDialog.Message = "GFSに権限を付与中";
                 {
                     var result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSF,
@@ -248,34 +250,33 @@ namespace EnableGPlayWithPC
                         return;
                     }
                 }
-                progressBarDialog.Value = progressBarDialog.Value + 4;
+                progressBarDialog.Value = progressBarDialog.Value + 5;
 
                 // もういちどGMSをインストール。
                 process = 6;
                 progressBarDialog.Message = "最終処理中";
                 if (!BenesseTabs.TARGET_MODEL.Contains(product))
                 {
-                    progressBarDialog.Value = progressBarDialog.Value + 3;
+                    progressBarDialog.Value = 95;
                     packageManager.InstallPackage(FileSelector_GMS.GetPath(), true);
                 }
                 else
                 {
-                    progressBarDialog.Value = progressBarDialog.Value + 3;
-                    ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " push " + FileSelector_GMS.GetPath() + " /data/local/tmp/base.apk & exit");
+                    ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + FileSelector_GMS.GetPath() + " /data/local/tmp/base.apk && exit");
                     processStartInfo.CreateNoWindow = true;
                     processStartInfo.UseShellExecute = false;
                     Process _process = Process.Start(processStartInfo);
                     _process.WaitForExit();
                     _process.Close();
-                    processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Properties.Resources.AdbPath + " shell pm install -r -d -i \"com.android.vending\" /data/local/tmp/base.apk & exit");
+                    processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " shell pm install -r -d -i \"com.android.vending\" /data/local/tmp/base.apk && exit");
                     processStartInfo.CreateNoWindow = true;
                     processStartInfo.UseShellExecute = false;
                     _process = Process.Start(processStartInfo);
                     _process.WaitForExit();
                     _process.Close();
                 }
-                AdbClient.Instance.Reboot("", device);
                 progressBarDialog.Value = 100;
+                AdbClient.Instance.Reboot("", device);
             }
             catch (Exception)
             {
@@ -293,6 +294,9 @@ namespace EnableGPlayWithPC
                         break;
                     case 4:
                         Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
+                        break;
+                    case 5:
+                        Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                         break;
                     case 6:
                         Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
