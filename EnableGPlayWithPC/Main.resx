@@ -152,7 +152,7 @@ Store</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_Vending.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="Label_GMS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -186,7 +186,7 @@ Service(GMS)</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GMS.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="Label_GSF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,7 +220,7 @@ Framework</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GSF.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="Label_GSFLogin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -257,7 +257,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label_GSFLogin.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,7 +292,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="Button_Process.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -334,7 +334,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Button_Process.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="LinkLabel_Repo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -364,11 +364,11 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LinkLabel_Repo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
   <data name="情報XToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
   </data>
@@ -397,7 +397,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -427,7 +427,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -457,7 +457,7 @@ Service</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="FileSelector_GSFLogin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9.75pt</value>
@@ -478,13 +478,13 @@ Service</value>
     <value>FileSelector_GSFLogin</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSFLogin.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSFLogin.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSFLogin.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="FileSelector_GSF.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9.75pt</value>
@@ -505,13 +505,13 @@ Service</value>
     <value>FileSelector_GSF</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSF.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSF.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FileSelector_GSF.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="FileSelector_GMS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9.75pt</value>
@@ -532,13 +532,13 @@ Service</value>
     <value>FileSelector_GMS</value>
   </data>
   <data name="&gt;&gt;FileSelector_GMS.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;FileSelector_GMS.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FileSelector_GMS.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="FileSelector_Vending.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9.75pt</value>
@@ -559,44 +559,17 @@ Service</value>
     <value>FileSelector_Vending</value>
   </data>
   <data name="&gt;&gt;FileSelector_Vending.Type" xml:space="preserve">
-    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>EnableGPlayWithPC.FileSelector, EnableGPlayWithPC, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;FileSelector_Vending.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FileSelector_Vending.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
-  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 309</value>
-  </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 21</value>
-  </data>
-  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="checkBox1.Text" xml:space="preserve">
-    <value>テストモード</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
-    <value>checkBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 17</value>
   </data>
@@ -618,10 +591,10 @@ Service</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Enable GPlay With PC</value>
   </data>
-  <data name="&gt;&gt;情報XToolStripMenuItem.Name" xml:space="preserve">
-    <value>情報XToolStripMenuItem</value>
+  <data name="&gt;&gt;InfoToolStripMenuItem.Name" xml:space="preserve">
+    <value>InfoToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;情報XToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;InfoToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

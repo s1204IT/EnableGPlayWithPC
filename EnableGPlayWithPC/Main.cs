@@ -31,22 +31,22 @@ namespace EnableGPlayWithPC
         private void Button_Process_Click(object sender, EventArgs e)
         {
             bool bl;
-            string path, appDir, DeviceName = "UNKNOWN_MODEL";
-            DeviceData device;
-            Progress progressBarDialog = new Progress();
+            string path, appDir, deviceName = "Unknown";
+            DeviceData deviceData;
+            ProgressDialog progressDialog = new ProgressDialog();
 
             // 処理ダイアログの表示
-            ShowProcessDialog(progressBarDialog, 0, null, 0);
+            ShowProcessDialog(progressDialog, 0, null, 0);
 
             // ファイルの存在を確認してなければエラー終了
-            ShowProcessDialog(progressBarDialog, 1, null, 0);
+            ShowProcessDialog(progressDialog, 1, null, 0);
             try
             {
                 (path, bl) = IsCheckFileExists();
 
                 if (!bl)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(string.Format(Properties.Resources.Dialog_Process_Error_Title), string.Format(Properties.Resources.Dialog_Process_Error_File404, path), Handle);
                     Enabled = true;
                     return;
@@ -55,21 +55,21 @@ namespace EnableGPlayWithPC
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
-                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, DeviceName), this.Handle);
+                progressDialog.Close();
+                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
                 Enabled = true;
                 return;
             }
 
             // adb.exeの存在を確認してなければエラー終了
-            ShowProcessDialog(progressBarDialog, 2, null, 0);
+            ShowProcessDialog(progressDialog, 2, null, 0);
             try
             {
-                (appDir, bl) = StartAdbServer(progressBarDialog);
+                (appDir, bl) = StartAdbServer(progressDialog);
 
                 if (!bl)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Adb404, Handle);
                     Enabled = true;
                     return;
@@ -78,21 +78,21 @@ namespace EnableGPlayWithPC
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
-                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, DeviceName), this.Handle);
+                progressDialog.Close();
+                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
                 Enabled = true;
                 return;
             }
 
             // デバイスが接続されているかを確認してされていないならエラー終了
-            ShowProcessDialog(progressBarDialog, 3, null, 0);
+            ShowProcessDialog(progressDialog, 3, null, 0);
             try
             {
-                (device, bl) = IsCheckDeviceConnect(progressBarDialog);
+                (deviceData, bl) = IsCheckDeviceConnect(progressDialog);
 
                 if (!bl)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_TooManyDevices_Inst, Properties.Resources.Dialog_TooManyDevices_Desc, Handle);
                     Enabled = true;
                     return;
@@ -101,8 +101,8 @@ namespace EnableGPlayWithPC
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
-                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, DeviceName), this.Handle);
+                progressDialog.Close();
+                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
                 Enabled = true;
                 return;
             }
@@ -110,11 +110,11 @@ namespace EnableGPlayWithPC
             // デバイス名を確認
             try
             {
-                (DeviceName, bl) = IsCheckDeviceName(progressBarDialog, device);
+                (deviceName, bl) = IsCheckDeviceName(progressDialog, deviceData);
 
                 if (!bl)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                     Enabled = true;
                     return;
@@ -123,8 +123,8 @@ namespace EnableGPlayWithPC
             catch (Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
-                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, DeviceName), this.Handle);
+                progressDialog.Close();
+                Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
                 Enabled = true;
                 return;
             }
@@ -132,9 +132,9 @@ namespace EnableGPlayWithPC
             // アンインストールの試行
             try
             {
-                if (!TryUninstallAPK(progressBarDialog, device))
+                if (!TryUninstallAPK(progressDialog, deviceData))
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                     Enabled = true;
                     return;
@@ -143,7 +143,7 @@ namespace EnableGPlayWithPC
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
+                progressDialog.Close();
                 Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 Enabled = true;
                 return;
@@ -152,9 +152,9 @@ namespace EnableGPlayWithPC
             // インストールの試行
             try
             {
-                if (!TryInstallAPKAsync(progressBarDialog, device, DeviceName, appDir).Result)
+                if (!TryInstallAPKAsync(progressDialog, deviceData, deviceName, appDir).Result)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
                     Enabled = true;
                     return;
@@ -163,7 +163,7 @@ namespace EnableGPlayWithPC
             catch (Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
+                progressDialog.Close();
                 Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 Enabled = true;
                 return;
@@ -172,9 +172,9 @@ namespace EnableGPlayWithPC
             // 権限付与試行
             try
             {
-                if (!TryGrantPermissions(progressBarDialog, device))
+                if (!TryGrantPermissions(progressDialog, deviceData))
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                     Enabled = true;
                     return;
@@ -183,19 +183,19 @@ namespace EnableGPlayWithPC
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
+                progressDialog.Close();
                 Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 Enabled = true;
                 return;
             }
 
             //再インストールの試行
-            ShowProcessDialog(progressBarDialog, 10, null, 0);
+            ShowProcessDialog(progressDialog, 10, null, 0);
             try
             {
-                if (!TryReInstallAPKAsync(progressBarDialog, device, DeviceName, appDir).Result)
+                if (!TryReInstallAPKAsync(progressDialog, deviceData, deviceName, appDir).Result)
                 {
-                    progressBarDialog.Close();
+                    progressDialog.Close();
                     Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
                     Enabled = true;
                     return;
@@ -204,7 +204,7 @@ namespace EnableGPlayWithPC
             catch (Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
+                progressDialog.Close();
                 Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 Enabled = true;
                 return;
@@ -213,12 +213,12 @@ namespace EnableGPlayWithPC
             // 最終処理
             try
             {
-                EndProcess(progressBarDialog, device);
+                EndProcess(progressDialog, deviceData);
             }
             catch(Exception)
             {
                 //例外が発生したらエラー終了
-                progressBarDialog.Close();
+                progressDialog.Close();
                 Dialog.Error(Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 Enabled = true;
                 return;
@@ -226,14 +226,8 @@ namespace EnableGPlayWithPC
             return;
         }
 
-        // 処理ダイアログのパーセンテージの値を変更
-        private void ProgressDialogCountUp(Progress progress, int value)
-        {
-            progress.Value += value;
-        }
-
         // 処理ダイアログを表示する
-        private void ShowProcessDialog(Progress progress, int process, string msg, int count)
+        private void ShowProcessDialog(ProgressDialog progress, int process, string msg, int count)
         {
             // 画面操作無効
             Enabled = false;
@@ -242,10 +236,8 @@ namespace EnableGPlayWithPC
             switch (process)
             {
                 case 0:
-                    progress.Value = 0;
                     progress.Title = "処理中";
-                    progress.Message = "初期化中";
-                    progress.Show();
+                    progress.Show(this);
                     break;
 
                 case 1:
@@ -307,12 +299,10 @@ namespace EnableGPlayWithPC
         }
 
         // adb.exeの確認
-        private (string, bool) StartAdbServer(Progress progressBarDialog)
+        private (string, bool) StartAdbServer(ProgressDialog progressBarDialog)
         {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             AdbServer adb = new AdbServer();
-
-            ProgressDialogCountUp(progressBarDialog, 7);
 
             // adb.exeがなければエラー終了
             try
@@ -327,11 +317,9 @@ namespace EnableGPlayWithPC
         }
 
         // デバイスが接続されているか確認
-        private (DeviceData, bool) IsCheckDeviceConnect(Progress progressBarDialog)
+        private (DeviceData, bool) IsCheckDeviceConnect(ProgressDialog progressBarDialog)
         {
             DeviceData device = AdbClient.Instance.GetDevices().First();
-
-            ProgressDialogCountUp(progressBarDialog, 1);
 
             if (AdbClient.Instance.GetDevices().Count > 1)
             {
@@ -341,12 +329,10 @@ namespace EnableGPlayWithPC
         }
 
         // デバイス名の確認
-        private (string, bool) IsCheckDeviceName(Progress progressBarDialog, DeviceData device)
+        private (string, bool) IsCheckDeviceName(ProgressDialog progressBarDialog, DeviceData device)
         {
             string DeviceName;
             ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-
-            ProgressDialogCountUp(progressBarDialog, 2);
 
             AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.product", device, receiver);
 
@@ -358,7 +344,7 @@ namespace EnableGPlayWithPC
             // 出力が名前にあるか確認
             if (!BenesseTabs.Names.Contains(DeviceName))
             { 
-                progressBarDialog.Hide();
+                progressBarDialog.Close();
                 var result = Dialog.ShowQuestion(Properties.Resources.Dialog_Not_Benesse_Tab_Inst, string.Format(Properties.Resources.Dialog_Not_Benesse_Tab_Desc, DeviceName), Handle);
                 if (result != true)
                 {
@@ -371,13 +357,10 @@ namespace EnableGPlayWithPC
         }
 
         // APKのアンインストール
-        private bool TryUninstallAPK(Progress progressBarDialog, DeviceData device)
+        private bool TryUninstallAPK(ProgressDialog progressBarDialog, DeviceData device)
         {
             PackageManager packageManager = new PackageManager(device);
 
-            // チェックボックスがクリックされていない
-            if (!checkBox1.Checked)
-            {
                 // APKをアンインストール
                 foreach (string pkg in Packages.Package)
                 {
@@ -385,30 +368,20 @@ namespace EnableGPlayWithPC
                     {
                         ShowProcessDialog(progressBarDialog, 4, pkg, 0);
                         packageManager.UninstallPackage(pkg);
-                        ProgressDialogCountUp(progressBarDialog, 2);
                     }
                     catch (Exception)
                     {
-                        ProgressDialogCountUp(progressBarDialog, 2);
                     }
                 }
-            }
-            else
-            {
-                ShowProcessDialog(progressBarDialog, 5, null, 0);
-                ProgressDialogCountUp(progressBarDialog, 17);
-            }
             return true;
         }
 
         // APKのインストール
-        private async Task<bool> TryInstallAPKAsync(Progress progressBarDialog, DeviceData device, string DeviceName, string appDir)
+        private Task<bool> TryInstallAPKAsync(ProgressDialog progressBarDialog, DeviceData device, string DeviceName, string appDir)
         {
             PackageManager packageManager = new PackageManager(device);
             string[] apks = GetSelectedPath();
             int i = 1;
-
-            ProgressDialogCountUp(progressBarDialog, 3);
 
             // APKインストール
             Array.ForEach(apks, apk =>
@@ -436,7 +409,6 @@ namespace EnableGPlayWithPC
                     process.WaitForExit();
                     process.Close();
                 }
-                ProgressDialogCountUp(progressBarDialog, 10);
                 i++;
             });
 
@@ -466,14 +438,13 @@ namespace EnableGPlayWithPC
                     process.WaitForExit();
                     process.Close();
                 }
-                ProgressDialogCountUp(progressBarDialog, 5);
                 i++;
             });
-            return true;
+            return Task.FromResult(true);
         }
 
         // 権限付与
-        private bool TryGrantPermissions(Progress progressBarDialog, DeviceData device)
+        private bool TryGrantPermissions(ProgressDialog progressBarDialog, DeviceData device)
         {
             // Play ストアに権限付与
             ShowProcessDialog(progressBarDialog, 7, null, 0);
@@ -488,8 +459,6 @@ namespace EnableGPlayWithPC
                 }
             }
 
-            ProgressDialogCountUp(progressBarDialog, 5);
-
             // GooglePlay開発者サービスに権限付与
             ShowProcessDialog(progressBarDialog, 8, null, 0);
             {
@@ -502,8 +471,6 @@ namespace EnableGPlayWithPC
                     return false;
                 }
             }
-
-            ProgressDialogCountUp(progressBarDialog, 5);
 
             // Google Service Frameworkに権限付与
             ShowProcessDialog(progressBarDialog, 9, null, 0);
@@ -521,11 +488,9 @@ namespace EnableGPlayWithPC
         }
 
         //APKの再インストール
-        private async Task<bool> TryReInstallAPKAsync(Progress progressBarDialog, DeviceData device, string DeviceName, string appDir)
+        private Task<bool> TryReInstallAPKAsync(ProgressDialog progressBarDialog, DeviceData device, string DeviceName, string appDir)
         {
             PackageManager packageManager = new PackageManager(device);
-
-            ProgressDialogCountUp(progressBarDialog, 5);
 
             // APK再インストール
             // チャレンジパッド2かどうか
@@ -550,14 +515,15 @@ namespace EnableGPlayWithPC
                 process.WaitForExit();
                 process.Close();
             }
-            return true;
+            return Task.FromResult(true);
         }
 
-        private void EndProcess(Progress progressBarDialog, DeviceData device)
+        private void EndProcess(ProgressDialog progressBarDialog, DeviceData device)
         {
             progressBarDialog.Value = 100;
 
             AdbClient.Instance.Reboot("", device);
+            AdbClient.Instance.KillAdb();
 
             progressBarDialog.Close();
 
@@ -585,7 +551,7 @@ namespace EnableGPlayWithPC
             Process.Start(@"https://github.com/AioiLight/EnableGPlayWithPC");
         }
 
-        private void 情報XToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(string.Format(Properties.Resources.Information, Assembly.GetExecutingAssembly().GetName().Version), Properties.Resources.Information_Title, MessageBoxButtons.OK, MessageBoxIcon.None);
         }

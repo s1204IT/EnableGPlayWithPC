@@ -78,7 +78,7 @@
     <Compile Include="FileSelector.Designer.cs">
       <DependentUpon>FileSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Progress.cs">
+    <Compile Include="ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.cs">
@@ -97,8 +97,8 @@
     <EmbeddedResource Include="FileSelector.resx">
       <DependentUpon>FileSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Progress.resx">
-      <DependentUpon>Progress.cs</DependentUpon>
+    <EmbeddedResource Include="ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.ja.resx">
       <DependentUpon>Main.cs</DependentUpon>

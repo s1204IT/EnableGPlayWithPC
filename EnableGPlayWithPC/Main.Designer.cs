@@ -37,14 +37,13 @@
             this.Button_Process = new System.Windows.Forms.Button();
             this.LinkLabel_Repo = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.情報XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.FileSelector_GSFLogin = new EnableGPlayWithPC.FileSelector();
             this.FileSelector_GSF = new EnableGPlayWithPC.FileSelector();
             this.FileSelector_GMS = new EnableGPlayWithPC.FileSelector();
             this.FileSelector_Vending = new EnableGPlayWithPC.FileSelector();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,15 +92,15 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.情報XToolStripMenuItem});
+            this.InfoToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // 情報XToolStripMenuItem
             // 
-            this.情報XToolStripMenuItem.Name = "情報XToolStripMenuItem";
-            resources.ApplyResources(this.情報XToolStripMenuItem, "情報XToolStripMenuItem");
-            this.情報XToolStripMenuItem.Click += new System.EventHandler(this.情報XToolStripMenuItem_Click);
+            this.InfoToolStripMenuItem.Name = "情報XToolStripMenuItem";
+            resources.ApplyResources(this.InfoToolStripMenuItem, "情報XToolStripMenuItem");
+            this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -140,17 +139,10 @@
             resources.ApplyResources(this.FileSelector_Vending, "FileSelector_Vending");
             this.FileSelector_Vending.Name = "FileSelector_Vending";
             // 
-            // checkBox1
-            // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LinkLabel_Repo);
@@ -170,7 +162,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.ShowIcon = false;
-            this.TopMost = true;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -191,10 +183,9 @@
         private System.Windows.Forms.Button Button_Process;
         private System.Windows.Forms.LinkLabel LinkLabel_Repo;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 情報XToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

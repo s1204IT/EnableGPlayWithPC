@@ -203,9 +203,7 @@ adb.exe が存在するかどうか確認してください。</value>
 
 MIT License
 
-Copyright(c) 2020 AioiLight
-
-The above copyright notice and this permission notice are included in all copies or most of the Software.</value>
+Copyright(c) 2020 AioiLight</value>
   </data>
   <data name="FileSelector_Extension" xml:space="preserve">
     <value>.apk</value>

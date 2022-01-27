@@ -251,9 +251,7 @@ namespace EnableGPlayWithPC.Properties {
         ///
         ///MIT License
         ///
-        ///Copyright(c) 2020 AioiLight
-        ///
-        ///The above copyright notice and this permission notice are included in all copies or most of the Software. に類似しているローカライズされた文字列を検索します。
+        ///Copyright(c) 2020 AioiLight に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Information {
             get {
