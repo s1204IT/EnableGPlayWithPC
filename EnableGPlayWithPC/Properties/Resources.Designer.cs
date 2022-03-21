@@ -181,6 +181,16 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
+        ///   処理中にエラーが発生しました。{0}をアンインストールできませんでした。
+        ///アンインストールブロッカーが設定されていないこと、デバイス管理者に設定されていないことを確認してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dialog_Process_Error_Un {
+            get {
+                return ResourceManager.GetString("Dialog_Process_Error_Un", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   処理中にエラーが発生しました。
         ///何らかのエラーが発生しました。詳しくはアプリケーション開発者にお問い合わせください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -248,8 +258,6 @@ namespace EnableGPlayWithPC.Properties {
         
         /// <summary>
         ///   バージョン : {0} / Kobold Ver.
-        ///
-        ///MIT License
         ///
         ///Copyright(c) 2020 AioiLight に類似しているローカライズされた文字列を検索します。
         /// </summary>

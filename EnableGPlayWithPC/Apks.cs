@@ -8,13 +8,11 @@
         internal static string GSFLogin = "apk\\GoogleLoginService.apk";
         internal static string ContactsSyncAdapters = "bin\\apk\\common\\GoogleContactsSyncAdapter.apk";
         internal static string CalendarSyncAdapters = "bin\\apk\\common\\GoogleCalendarSyncAdapter.apk";
-        internal static string GooglePartnerSetup = "bin\\apk\\common\\GooglePartnerSetup.apk";
 
         internal static string[] installList = new string[]
         {
             ContactsSyncAdapters,
-            CalendarSyncAdapters,
-            GooglePartnerSetup
+            CalendarSyncAdapters
         };
     }
 }

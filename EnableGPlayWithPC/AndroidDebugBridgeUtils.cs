@@ -47,18 +47,8 @@ namespace EnableGPlayWithPC
 
                 if (!IsPermissionGranted(result))
                 {
-                    if (!Dialog.NotGranted(
-                        string.Format(Properties.Resources.Dialog_PermNotGranted_Inst,
-                            Packages.Vending),
-                        string.Format(Properties.Resources.Dialog_PermNotGranted_Desc,
-                            Packages.Vending,
-                            perm),
-                        result.Length > 128 ? result.Substring(0, 128) + "..." : result,
-                        handle))
-                    {
-                        // 権限付与に失敗してなおかつキャンセルされた
-                        return false;
-                    }
+                    // 権限付与に失敗してなおかつキャンセルされた
+                    return false;
                 }
             }
 

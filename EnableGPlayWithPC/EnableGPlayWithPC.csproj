@@ -71,16 +71,6 @@
     <Compile Include="AndroidDebugBridgeUtils.cs" />
     <Compile Include="Apks.cs" />
     <Compile Include="BenesseTabs.cs" />
-    <Compile Include="Dialog.cs" />
-    <Compile Include="FileSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileSelector.Designer.cs">
-      <DependentUpon>FileSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,18 +81,18 @@
     <Compile Include="Permissions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FileSelector.ja.resx">
-      <DependentUpon>FileSelector.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileSelector.resx">
-      <DependentUpon>FileSelector.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProgressDialog.resx">
-      <DependentUpon>ProgressDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.ja.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl2.Designer.cs">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +116,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl2.resx">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
