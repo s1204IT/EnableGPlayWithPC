@@ -1,10 +1,8 @@
-﻿namespace EnableGPlayWithPC
-{
-    internal static class Permissions
-    {
+﻿namespace EnableGPlayWithPC {
+    internal static class Permissions {
         internal static string Prefix = "android.permission.";
 
-        internal static string[] Vending = new string[] 
+        internal static string[] Vending = new string[]
         {
             "BATTERY_STATS",
             "DUMP",

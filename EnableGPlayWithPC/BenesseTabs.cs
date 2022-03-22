@@ -1,7 +1,5 @@
-﻿namespace EnableGPlayWithPC
-{
-    internal static class BenesseTabs
-    {
+﻿namespace EnableGPlayWithPC {
+    internal static class BenesseTabs {
         internal static string[] Names = new string[]
         {
             "TAB-A03-BS",
