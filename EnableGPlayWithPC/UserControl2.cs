@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SharpAdbClient;
 
 namespace EnableGPlayWithPC {
     public partial class UserControl2 : UserControl {
@@ -23,6 +24,7 @@ namespace EnableGPlayWithPC {
         }
 
         public void StopProgress() {
+            AdbClient.Instance.KillAdb();
             this.Invoke(new Action(this.b));
         }
         public void WriteLog(string logText) {

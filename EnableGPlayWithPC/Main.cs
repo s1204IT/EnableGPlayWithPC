@@ -12,7 +12,7 @@ namespace EnableGPlayWithPC {
         static Main instance;
         static UserControl1 ctr1;
         static UserControl2 ctr2;
-
+        
         public static Main getInstance() {
             return instance;
         }
@@ -158,12 +158,6 @@ namespace EnableGPlayWithPC {
             return files;
         }
 
-        private string[] GetLaterPath() {
-            string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string[] files = { Path.Combine(appDir, Apks.Vending), Path.Combine(appDir, Apks.NEO_GMS), Path.Combine(appDir, Apks.GSF), Path.Combine(appDir, Apks.GSFLogin) };
-            return files;
-        }
-
         // 処理順にメッセージ変更
         private void ShowProcessDialog(int process, string msg, int count) {
             switch (process) {
@@ -290,7 +284,6 @@ namespace EnableGPlayWithPC {
                     ShowProcessDialog(4, pkg, 0);
                     packageManager.UninstallPackage(pkg);
                 } catch (Exception) {
-                    return (pkg, true);
                 }
             }
             return ("", true);
@@ -301,9 +294,9 @@ namespace EnableGPlayWithPC {
             PackageManager packageManager = new PackageManager(device);
             string[] apks;
             if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
-                apks = GetSelectedPath();
+                apks = Apks.GAppsInstallList(appDir);
             } else {
-                apks = GetLaterPath();
+                apks = Apks.NEO_GAppsInstallList(appDir);
             }
             int i = 1;
 
@@ -322,7 +315,7 @@ namespace EnableGPlayWithPC {
             });
 
             // あとから追加したAPKもインストール
-            Array.ForEach(Apks.installList, apk => {
+            Array.ForEach(Apks.GAppsOtherInstallList, apk => {
                 ShowProcessDialog(5, null, i);
 
                 // チャレンジパッド2かどうか
@@ -371,6 +364,12 @@ namespace EnableGPlayWithPC {
                 if (!result) {
                 }
             }
+
+            // Google Login Serviceに権限付与
+            AndroidDebugBridgeUtils.GrantPermissions(Packages.GSFLogin,
+                        Permissions.GSFLogin,
+                        device,
+                        Handle);
             return true;
         }
 

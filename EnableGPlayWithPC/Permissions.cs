@@ -13,6 +13,7 @@
 
         internal static string[] GMS = new string[]
         {
+            "SYSTEM_ALERT_WINDOW",
             "INTERACT_ACROSS_USERS",
             "READ_LOGS",
             "GET_APP_OPS_STATS"
@@ -24,6 +25,12 @@
             "DUMP",
             "WRITE_SECURE_SETTINGS",
             "INTERACT_ACROSS_USERS"
+        };
+
+        internal static string[] GSFLogin = new string[]
+        {
+            "READ_LOGS",
+            "DUMP"
         };
     }
 }
