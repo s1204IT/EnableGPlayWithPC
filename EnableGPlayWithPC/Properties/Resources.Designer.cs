@@ -131,8 +131,8 @@ namespace EnableGPlayWithPC.Properties {
         ///以下を確認してください：
         ///・デバイスの接続
         ///・このPCからのUSBデバッグの許可
-        ///確認してから再実行してください。
         ///
+        ///確認してから再実行してください。
         ///取得したデバイス名：{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Adb {

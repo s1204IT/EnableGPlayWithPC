@@ -146,8 +146,8 @@
 以下を確認してください：
 ・デバイスの接続
 ・このPCからのUSBデバッグの許可
-確認してから再実行してください。
 
+確認してから再実行してください。
 取得したデバイス名：{0}</value>
   </data>
   <data name="Dialog_Process_Error_Adb404" xml:space="preserve">

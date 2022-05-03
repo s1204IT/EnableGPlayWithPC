@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
-using static System.Net.WebRequestMethods;
 
 namespace EnableGPlayWithPC {
     internal static class Apks {
@@ -23,7 +21,8 @@ namespace EnableGPlayWithPC {
         }
 
         internal static string[] GAppsOtherInstallList = new string[] {
-            CalendarSyncAdapters
+            CalendarSyncAdapters,
+            ContactsSyncAdapters
         };
     }
 }
