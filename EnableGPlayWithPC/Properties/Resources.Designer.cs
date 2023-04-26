@@ -61,7 +61,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   adb\adb.exe に類似しているローカライズされた文字列を検索します。
+        ///   ADB\adb.exe に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string AdbPath {
             get {
@@ -107,8 +107,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   {1} に権限 &quot;{0}&quot; を付与することができませんでした。
-        ///アプリは完全に動作しない可能性があります。 に類似しているローカライズされた文字列を検索します。
+        ///   {1} に権限 &quot;{0}&quot; を付与することができませんでした。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_PermNotGranted_Desc {
             get {
@@ -128,11 +127,13 @@ namespace EnableGPlayWithPC.Properties {
         /// <summary>
         ///   何らかのエラーが発生したためデバイスと通信できませんでした。
         ///
+        ///
         ///以下を確認してください：
+        ///
         ///・デバイスの接続
+        ///
         ///・このPCからのUSBデバッグの許可
         ///
-        ///確認してから再実行してください。
         ///取得したデバイス名：{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Adb {
@@ -181,7 +182,9 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   処理中にエラーが発生しました。{0}をアンインストールできませんでした。
+        ///   処理中にエラーが発生しました。
+        ///{0}をアンインストールできませんでした。
+        ///
         ///アンインストールブロッカーが設定されていないこと、デバイス管理者に設定されていないことを確認してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Un {
@@ -191,8 +194,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   処理中にエラーが発生しました。
-        ///何らかのエラーが発生しました。詳しくはアプリケーション開発者にお問い合わせください。 に類似しているローカライズされた文字列を検索します。
+        ///   処理中に何らかのエラーが発生しました。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Unknown {
             get {
@@ -202,7 +204,8 @@ namespace EnableGPlayWithPC.Properties {
         
         /// <summary>
         ///   Google の機能は有効化されました！
-        ///デバイスは再起動中です。再起動後使用可能になります。 に類似しているローカライズされた文字列を検索します。
+        ///
+        ///デバイスは再起動中です。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Successed_Desc {
             get {
@@ -248,7 +251,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   .apk ファイルを開く に類似しているローカライズされた文字列を検索します。
+        ///   APK ファイルを開く に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FileSelector_Title {
             get {
@@ -259,7 +262,7 @@ namespace EnableGPlayWithPC.Properties {
         /// <summary>
         ///   バージョン : {0} / Kobold Ver.
         ///
-        ///Copyright(c) 2020 AioiLight に類似しているローカライズされた文字列を検索します。
+        ///© 2020 AioiLight に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Information {
             get {

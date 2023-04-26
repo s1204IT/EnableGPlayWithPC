@@ -4,33 +4,34 @@
 
         internal static string[] Vending = new string[]
         {
+            "PACKAGE_USAGE_STATS",
             "BATTERY_STATS",
             "DUMP",
             "GET_APP_OPS_STATS",
-            "WRITE_SECURE_SETTINGS",
-            "INTERACT_ACROSS_USERS"
+            "INTERACT_ACROSS_USERS",
+            "WRITE_SECURE_SETTINGS"
         };
 
         internal static string[] GMS = new string[]
         {
-            "SYSTEM_ALERT_WINDOW",
             "INTERACT_ACROSS_USERS",
-            "READ_LOGS",
-            "GET_APP_OPS_STATS"
+            "PACKAGE_USAGE_STATS",
+            "GET_APP_OPS_STATS",
+            "READ_LOGS"
         };
 
         internal static string[] GSF = new string[]
         {
-            "READ_LOGS",
             "DUMP",
+            "READ_LOGS",
             "WRITE_SECURE_SETTINGS",
             "INTERACT_ACROSS_USERS"
         };
 
         internal static string[] GSFLogin = new string[]
         {
-            "READ_LOGS",
-            "DUMP"
+            "DUMP",
+            "READ_LOGS"
         };
     }
 }

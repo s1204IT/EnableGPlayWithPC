@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -127,7 +127,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(SolutionDir)platform-tools\*" "$(TargetDir)*"
-copy "$(SolutionDir)README.txt" "$(TargetDir)README.txt"</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(SolutionDir)resources\" "$(TargetDir)*" /I /E /Y
+:"C:\Program Files (x86)\Microsoft\ILMerge\ILMerge.exe" /out:"$(TargetDir)$(TargetName)_merged.exe" "$(TargetDir)$(TargetFileName)" /wildcards "$(TargetDir)*.dll" /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\"
+:DEL "$(TargetDir)$(TargetName).*"
+:DEL /Q "$(TargetDir)*.dll"
+:DEL /Q "$(TargetDir)*.xml"
+:DEL "$(TargetDir)$(TargetName)_merged.pdb"
+:REN "$(TargetDir)$(TargetName)_merged.exe" "$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

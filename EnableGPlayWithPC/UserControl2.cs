@@ -38,7 +38,7 @@ namespace EnableGPlayWithPC {
         private void a(string logText) {
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
-            textBox1.SelectedText = "[" + System.DateTime.Now.ToString() + "]" + logText + "\r\n";
+            textBox1.SelectedText = "[" + System.DateTime.Now.ToString("HH:mm:ss") + "] " + logText + "\r\n";
         }
 
         private void b() {

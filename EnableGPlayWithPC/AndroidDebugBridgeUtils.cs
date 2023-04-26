@@ -59,7 +59,7 @@ namespace EnableGPlayWithPC {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string installCmd = $"pm install -i \"com.android.vending\" -r /data/local/tmp/base.apk";
             ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-            ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/k " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + fileName + " /data/local/tmp/base.apk && exit");
+            ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/c " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + fileName + " /data/local/tmp/base.apk");
             processStartInfo.CreateNoWindow = true;
             processStartInfo.UseShellExecute = false;
             Process process = Process.Start(processStartInfo);

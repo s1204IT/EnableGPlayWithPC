@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdbPath" xml:space="preserve">
-    <value>adb\adb.exe</value>
+    <value>ADB\adb.exe</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
@@ -134,8 +134,7 @@
     <value>チャレンジパッドが見つかりませんでした</value>
   </data>
   <data name="Dialog_PermNotGranted_Desc" xml:space="preserve">
-    <value>{1} に権限 "{0}" を付与することができませんでした。
-アプリは完全に動作しない可能性があります。</value>
+    <value>{1} に権限 "{0}" を付与することができませんでした。</value>
   </data>
   <data name="Dialog_PermNotGranted_Inst" xml:space="preserve">
     <value>{0} に権限を付与することができませんでした</value>
@@ -143,11 +142,13 @@
   <data name="Dialog_Process_Error_Adb" xml:space="preserve">
     <value>何らかのエラーが発生したためデバイスと通信できませんでした。
 
+
 以下を確認してください：
+
 ・デバイスの接続
+
 ・このPCからのUSBデバッグの許可
 
-確認してから再実行してください。
 取得したデバイス名：{0}</value>
   </data>
   <data name="Dialog_Process_Error_Adb404" xml:space="preserve">
@@ -166,16 +167,18 @@ adb.exe が存在するかどうか確認してください。</value>
     <value>処理エラー</value>
   </data>
   <data name="Dialog_Process_Error_Un" xml:space="preserve">
-    <value>処理中にエラーが発生しました。{0}をアンインストールできませんでした。
+    <value>処理中にエラーが発生しました。
+{0}をアンインストールできませんでした。
+
 アンインストールブロッカーが設定されていないこと、デバイス管理者に設定されていないことを確認してください。</value>
   </data>
   <data name="Dialog_Process_Error_Unknown" xml:space="preserve">
-    <value>処理中にエラーが発生しました。
-何らかのエラーが発生しました。詳しくはアプリケーション開発者にお問い合わせください。</value>
+    <value>処理中に何らかのエラーが発生しました。</value>
   </data>
   <data name="Dialog_Successed_Desc" xml:space="preserve">
     <value>Google の機能は有効化されました！
-デバイスは再起動中です。再起動後使用可能になります。</value>
+
+デバイスは再起動中です。</value>
   </data>
   <data name="Dialog_Successed_Inst" xml:space="preserve">
     <value>成功しました！</value>
@@ -191,12 +194,12 @@ adb.exe が存在するかどうか確認してください。</value>
     <value>.apk</value>
   </data>
   <data name="FileSelector_Title" xml:space="preserve">
-    <value>.apk ファイルを開く</value>
+    <value>APK ファイルを開く</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>バージョン : {0} / Kobold Ver.
 
-Copyright(c) 2020 AioiLight</value>
+© 2020 AioiLight</value>
   </data>
   <data name="Information_Title" xml:space="preserve">
     <value>バージョン情報</value>

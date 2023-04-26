@@ -96,7 +96,7 @@ namespace EnableGPlayWithPC {
                 ShowProcessDialog(3, null, 0);
                 try {
                     ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-                    AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.product", AdbClient.Instance.GetDevices().First(), receiver);
+                    AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.product.model", AdbClient.Instance.GetDevices().First(), receiver);
                     deviceName = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
                 } catch (Exception) {
                     ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName));
@@ -183,8 +183,8 @@ namespace EnableGPlayWithPC {
                     break;
 
                 case 2:
-                    UserControl2.getInstance().WriteLog("adbを確認しています...");
-                    UserControl2.getInstance().SetMessage("adbを確認しています...");
+                    UserControl2.getInstance().WriteLog("ADB を確認しています...");
+                    UserControl2.getInstance().SetMessage("ADB を確認しています...");
                     break;
 
                 case 3:
@@ -193,13 +193,13 @@ namespace EnableGPlayWithPC {
                     break;
 
                 case 4:
-                    UserControl2.getInstance().WriteLog(msg + "をアンインストールしています...\n");
+                    UserControl2.getInstance().WriteLog(msg + "をアンインストールしています...\r\n");
                     UserControl2.getInstance().SetMessage(msg + "をアンインストールしています...");
                     break;
 
                 case 5:
-                    UserControl2.getInstance().WriteLog(msg + "をインストールしています...(" + count + "/6)\n");
-                    UserControl2.getInstance().SetMessage(msg + "をインストールしています...(" + count + "/6)");
+                    UserControl2.getInstance().WriteLog(msg + "をインストールしています...(" + count + "/4)\r\n");
+                    UserControl2.getInstance().SetMessage(msg + "をインストールしています...(" + count + "/4)");
                     break;
 
                 case 6:
@@ -266,7 +266,7 @@ namespace EnableGPlayWithPC {
             try {
                 ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
 
-                AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.product", device, receiver);
+                AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.product.model", device, receiver);
 
                 // 余計な改行は入れさせない
                 DeviceName = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
@@ -322,47 +322,21 @@ namespace EnableGPlayWithPC {
                 }
                 i++;
             });
-
-            // あとから追加したAPKもインストール
-            Array.ForEach(Apks.GAppsOtherInstallList, apk => {
-                ShowProcessDialog(5, apk, i);
-
-                // チャレンジパッド2かどうか
-                if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
-                    packageManager.InstallPackage(apk, false);
-                } else {
-                    // チャレンジパッド3・NEO
-                    AndroidDebugBridgeUtils.InstallPackage(device, apk);
-                }
-                i++;
-            });
             return true;
         }
 
         // 権限付与
         private bool TryGrantPermissions(DeviceData device) {
-            // Play ストアに権限付与
-            ShowProcessDialog(6, Packages.Vending, 0);
+            // Google Login Serviceに権限付与
+            ShowProcessDialog(6, Packages.GSFLogin, 0);
             {
-                bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.Vending,
-                        Permissions.Vending,
+                bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSFLogin,
+                        Permissions.GSFLogin,
                         device,
                         Handle);
                 if (!result) {
                 }
             }
-
-            // GooglePlay開発者サービスに権限付与
-            ShowProcessDialog(6, Packages.GMS, 0);
-            {
-                bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GMS,
-                        Permissions.GMS,
-                        device,
-                        Handle);
-                if (!result) {
-                }
-            }
-
             // Google Service Frameworkに権限付与
             ShowProcessDialog(6, Packages.GSF, 0);
             {
@@ -373,13 +347,23 @@ namespace EnableGPlayWithPC {
                 if (!result) {
                 }
             }
-
-            // Google Login Serviceに権限付与
-            ShowProcessDialog(6, Packages.GSFLogin, 0);
-            AndroidDebugBridgeUtils.GrantPermissions(Packages.GSFLogin,
-                        Permissions.GSFLogin,
+            // GooglePlay開発者サービスに権限付与
+            ShowProcessDialog(6, Packages.GMS, 0);
+            {
+                bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GMS,
+                        Permissions.GMS,
                         device,
                         Handle);
+                if (!result) {
+                }
+            }
+            // Play ストアに権限付与
+            ShowProcessDialog(6, Packages.Vending, 0);
+            AndroidDebugBridgeUtils.GrantPermissions(Packages.Vending,
+                    Permissions.Vending,
+                    device,
+                    Handle);
+
             return true;
         }
 
@@ -393,7 +377,7 @@ namespace EnableGPlayWithPC {
                 packageManager.InstallPackage(Path.Combine(appDir, Apks.GMS), true);
             } else {
                 // チャレンジパッド3・NEO
-                AndroidDebugBridgeUtils.InstallPackage(device, Path.Combine(appDir, Apks.NEO_GMS));
+                AndroidDebugBridgeUtils.InstallPackage(device, Path.Combine(appDir, Apks.old_GMS));
             }
             return true;
         }

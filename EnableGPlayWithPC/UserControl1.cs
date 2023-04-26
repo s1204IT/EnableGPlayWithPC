@@ -11,25 +11,26 @@ namespace EnableGPlayWithPC {
             textBox1.ReadOnly = true;
             linkLabel1.Text = "開発者のページはここをクリックしてください。";
             linkLabel1.Links.Add(8, 2, "");
-            string[] str = { "基本的な変更（Googleサービスの有効化）" };
+            string[] str = { "Googleサービスのインストール" };
             checkedListBox1.Items.AddRange(str);
             checkedListBox1.CheckOnClick = true;
+            checkedListBox1.Enabled = false;
             checkedListBox1.SetItemCheckState(0, CheckState.Checked);
-            writeConsole($"{Assembly.GetExecutingAssembly().GetName().Name}   " + $"Ver.{Assembly.GetExecutingAssembly().GetName().Version}");
+            writeConsole($"\r\n{Assembly.GetExecutingAssembly().GetName().Name}   " + $"Ver.{Assembly.GetExecutingAssembly().GetName().Version}");
             writeConsole($"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).LegalCopyright}");
-            writeConsole("\"実行\"を押すとタブレット内のGSF系のアプリが再インストールされます。タブレットは自動的に再起動します。実行している間は絶対にタブレットに触らないでください！");
+            writeConsole("\r\n\"実行\"を押すとタブレット内にGMS系のアプリがインストールされます。\r\n処理が完了後、タブレットは自動的に再起動します。\r\n実行している間は絶対にタブレットに触らないでください！");
         }
 
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e) {
             if (!checkedListBox1.GetItemChecked(e.Index)) {
-                writeLog($"{checkedListBox1.Items[e.Index]}がチェックされました");
+                writeLog($"[{checkedListBox1.Items[e.Index]}] がチェックされました");
             }
         }
 
         void writeLog(string logText) {
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
-            textBox1.SelectedText = "[" + System.DateTime.Now.ToString() + "]" + logText + "\r\n";
+            textBox1.SelectedText = "[" + System.DateTime.Now.ToString("HH:mm:ss") + "] " + logText + "\r\n";
         }
 
         void writeConsole(string text) {
@@ -39,11 +40,6 @@ namespace EnableGPlayWithPC {
         }
 
         public async void Button_Click(object sender, EventArgs e) {
-            if (!checkedListBox1.GetItemChecked(0)) {
-                checkedListBox1.SetItemChecked(0, true);
-                writeLog("基本的な変更（Googleサービスの有効化）を無効にすることはできません");
-                return;
-            }
             Main.getInstance().ChangeUserControl();
             Task task = Task.Run(Main.getInstance().TryEnableGoogleServices);
             await task;
