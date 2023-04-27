@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("EnableGPlayWithPC")]
-[assembly: AssemblyCopyright("© 2020 AioiLight")]
+[assembly: AssemblyCopyright("© 2020 AioiLight, © 2021 Kobold")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

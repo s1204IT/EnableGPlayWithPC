@@ -260,9 +260,11 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   バージョン : {0} / Kobold Ver.
+        ///   バージョン : {0}
         ///
-        ///© 2020 AioiLight に類似しているローカライズされた文字列を検索します。
+        ///© 2020 AioiLight
+        ///© 2021 Kobold
+        /// に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Information {
             get {

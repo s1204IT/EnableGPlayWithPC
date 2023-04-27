@@ -16,21 +16,14 @@ namespace EnableGPlayWithPC {
             checkedListBox1.CheckOnClick = true;
             checkedListBox1.Enabled = false;
             checkedListBox1.SetItemCheckState(0, CheckState.Checked);
-            writeConsole($"\r\n{Assembly.GetExecutingAssembly().GetName().Name}   " + $"Ver.{Assembly.GetExecutingAssembly().GetName().Version}");
-            writeConsole($"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).LegalCopyright}");
-            writeConsole("\r\n\"実行\"を押すとタブレット内にGMS系のアプリがインストールされます。\r\n処理が完了後、タブレットは自動的に再起動します。\r\n実行している間は絶対にタブレットに触らないでください！");
-        }
-
-        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e) {
-            if (!checkedListBox1.GetItemChecked(e.Index)) {
-                writeLog($"[{checkedListBox1.Items[e.Index]}] がチェックされました");
-            }
+            writeConsole($"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).LegalCopyright}\r\n");
+            writeConsole("\"実行\"を押すとタブレット内にGMS系のアプリがインストールされます。\r\n処理が完了後、タブレットは自動的に再起動します。\r\n実行している間は絶対にタブレットに触らないでください！");
         }
 
         void writeLog(string logText) {
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
-            textBox1.SelectedText = "[" + System.DateTime.Now.ToString("HH:mm:ss") + "] " + logText + "\r\n";
+            textBox1.SelectedText = "\r\n[" + System.DateTime.Now.ToString("HH:mm:ss") + "] " + logText;
         }
 
         void writeConsole(string text) {

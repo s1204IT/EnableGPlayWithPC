@@ -197,9 +197,11 @@ adb.exe が存在するかどうか確認してください。</value>
     <value>APK ファイルを開く</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>バージョン : {0} / Kobold Ver.
+    <value>バージョン : {0}
 
-© 2020 AioiLight</value>
+© 2020 AioiLight
+© 2021 Kobold
+</value>
   </data>
   <data name="Information_Title" xml:space="preserve">
     <value>バージョン情報</value>
