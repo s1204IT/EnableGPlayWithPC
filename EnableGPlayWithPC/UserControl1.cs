@@ -20,12 +20,6 @@ namespace EnableGPlayWithPC {
             writeConsole("\"実行\"を押すとタブレット内にGMS系のアプリがインストールされます。\r\n処理が完了後、タブレットは自動的に再起動します。\r\n実行している間は絶対にタブレットに触らないでください！");
         }
 
-        void writeLog(string logText) {
-            textBox1.SelectionStart = textBox1.Text.Length;
-            textBox1.SelectionLength = 0;
-            textBox1.SelectedText = "\r\n[" + System.DateTime.Now.ToString("HH:mm:ss") + "] " + logText;
-        }
-
         void writeConsole(string text) {
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
