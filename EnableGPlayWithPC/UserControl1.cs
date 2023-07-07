@@ -9,8 +9,8 @@ namespace EnableGPlayWithPC {
         public UserControl1() {
             InitializeComponent();
             textBox1.ReadOnly = true;
-            linkLabel1.Text = "開発者のページはここをクリックしてください。";
-            linkLabel1.Links.Add(8, 2, "");
+            linkLabel1.Text = "ソースコードはここから";
+            linkLabel1.Links.Add(7, 4, "");
             string[] str = { "Googleサービスのインストール" };
             checkedListBox1.Items.AddRange(str);
             checkedListBox1.CheckOnClick = true;
@@ -33,7 +33,7 @@ namespace EnableGPlayWithPC {
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start(@"https://github.com/AioiLight/EnableGPlayWithPC");
+            Process.Start(@"https://github.com/s1204IT/EnableGPlayWithPC");
         }
     }
 }

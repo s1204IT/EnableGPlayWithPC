@@ -7,7 +7,6 @@
 
         internal static string[] Package = new string[]
         {
-
             GSFLogin,
             GSF,
             GMS,

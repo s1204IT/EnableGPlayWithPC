@@ -74,7 +74,7 @@ namespace EnableGPlayWithPC {
             ShowProcessDialog(0, null, 0);
 
             try {
-                // ファイルの存在を確認してなければエラー終了
+                // ファイルが存在しなければエラー終了
                 ShowProcessDialog(1, null, 0);
                 (path, bl) = IsCheckFileExists();
                 if (!bl) {
@@ -83,7 +83,7 @@ namespace EnableGPlayWithPC {
                     return;
                 }
 
-                // adb.exeの存在を確認してなければエラー終了
+                // ADBが存在しなければエラー終了
                 ShowProcessDialog(2, null, 0);
                 (appDir, bl) = StartAdbServer();
                 if (!bl) {
@@ -92,7 +92,7 @@ namespace EnableGPlayWithPC {
                     return;
                 }
 
-                //ADB接続を確認
+                // ADB接続を確認
                 ShowProcessDialog(3, null, 0);
                 try {
                     ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
@@ -142,7 +142,7 @@ namespace EnableGPlayWithPC {
                     return;
                 }
 
-                //再インストールの試行
+                // 再インストールの試行
                 ShowProcessDialog(7, null, 0);
                 if (!TryReInstallAPK(deviceData, deviceName, appDir)) {
                     ShowErrorMessage(Properties.Resources.Dialog_Process_Error_In);
@@ -155,14 +155,14 @@ namespace EnableGPlayWithPC {
                 EndProcess(deviceData);
                 return;
             } catch (Exception) {
-                //例外が発生したらエラー終了
+                // 例外が発生したらエラー終了
                 ShowErrorMessage(Properties.Resources.Dialog_Process_Error_Unknown);
                 this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_Unknown, this.Handle);
                 return;
             }
         }
 
-        //ファイルパスを取得
+        // ファイルパスを取得
         private string[] GetSelectedPath() {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string[] files = { Path.Combine(appDir, Apks.Vending), Path.Combine(appDir, Apks.GMS), Path.Combine(appDir, Apks.GSF), Path.Combine(appDir, Apks.GSFLogin) };
@@ -232,12 +232,12 @@ namespace EnableGPlayWithPC {
             return (null, true);
         }
 
-        // adb.exeの確認
+        // ADBの確認
         private (string, bool) StartAdbServer() {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             AdbServer adb = new AdbServer();
 
-            // adb.exeがなければエラー終了
+            // ADBサーバーが開始出来なければエラー終了
             try {
                 StartServerResult result = adb.StartServer(Path.Combine(appDir, Properties.Resources.AdbPath), true);
             } catch (Exception) {
@@ -286,8 +286,6 @@ namespace EnableGPlayWithPC {
         // APKのアンインストール
         private (string, bool) TryUninstallAPK(DeviceData device) {
             PackageManager packageManager = new PackageManager(device);
-
-            // APKをアンインストール
             foreach (string pkg in Packages.Package) {
                 try {
                     ShowProcessDialog(4, pkg, 0);
@@ -308,16 +306,13 @@ namespace EnableGPlayWithPC {
                 apks = Apks.NEO_GAppsInstallList(appDir);
             }
             int i = 1;
-
-            // APKインストール
             Array.ForEach(apks, apk => {
                 ShowProcessDialog(5, apk, i);
-
-                // チャレンジパッド2かどうか
                 if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
+                    // CT2
                     packageManager.InstallPackage(apk, false);
                 } else {
-                    // チャレンジパッド3・NEO
+                    // CT3/X/Z
                     AndroidDebugBridgeUtils.InstallPackage(device, apk);
                 }
                 i++;
@@ -327,7 +322,7 @@ namespace EnableGPlayWithPC {
 
         // 権限付与
         private bool TryGrantPermissions(DeviceData device) {
-            // Google Login Serviceに権限付与
+            // Googleアカウントマネージャー に権限付与
             ShowProcessDialog(6, Packages.GSFLogin, 0);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSFLogin,
@@ -337,7 +332,7 @@ namespace EnableGPlayWithPC {
                 if (!result) {
                 }
             }
-            // Google Service Frameworkに権限付与
+            // Googleサービスフレームワーク に権限付与
             ShowProcessDialog(6, Packages.GSF, 0);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSF,
@@ -347,7 +342,7 @@ namespace EnableGPlayWithPC {
                 if (!result) {
                 }
             }
-            // GooglePlay開発者サービスに権限付与
+            // Google Play開発者サービス に権限付与
             ShowProcessDialog(6, Packages.GMS, 0);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GMS,
@@ -357,7 +352,7 @@ namespace EnableGPlayWithPC {
                 if (!result) {
                 }
             }
-            // Play ストアに権限付与
+            // Play ストア に権限付与
             ShowProcessDialog(6, Packages.Vending, 0);
             AndroidDebugBridgeUtils.GrantPermissions(Packages.Vending,
                     Permissions.Vending,
@@ -367,16 +362,14 @@ namespace EnableGPlayWithPC {
             return true;
         }
 
-        //APKの再インストール
+        // APKの再インストール
         private bool TryReInstallAPK(DeviceData device, string DeviceName, string appDir) {
             PackageManager packageManager = new PackageManager(device);
-
-            // APK再インストール
-            // チャレンジパッド2かどうか
             if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
+                // CT2
                 packageManager.InstallPackage(Path.Combine(appDir, Apks.GMS), true);
             } else {
-                // チャレンジパッド3・NEO
+                // CT3/X/Z
                 AndroidDebugBridgeUtils.InstallPackage(device, Path.Combine(appDir, Apks.old_GMS));
             }
             return true;

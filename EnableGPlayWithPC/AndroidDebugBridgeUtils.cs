@@ -14,7 +14,7 @@ namespace EnableGPlayWithPC {
                 // Operation not allowed:で始まる行が少なくともひとつはある
                 return false;
             } else {
-                // パーミション付与に成功している
+                // 権限付与に成功している
                 return true;
             }
         }
@@ -28,7 +28,7 @@ namespace EnableGPlayWithPC {
                 string result = receiver.ToString();
 
                 if (!IsPermissionGranted(result)) {
-                    // 権限付与に失敗してなおかつキャンセルされた
+                    // 権限付与に失敗してキャンセルされた
                     return false;
                 }
             }
@@ -38,7 +38,7 @@ namespace EnableGPlayWithPC {
 
         internal static bool InstallPackage(DeviceData device, string fileName) {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string installCmd = $"pm install -i \"com.android.vending\" -r /data/local/tmp/base.apk";
+            string installCmd = $"pm install -i com.android.vending -r /data/local/tmp/base.apk";
             ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
             ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/c " + Path.Combine(appDir, Properties.Resources.AdbPath) + " push " + fileName + " /data/local/tmp/base.apk");
             processStartInfo.CreateNoWindow = true;
