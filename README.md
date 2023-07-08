@@ -5,6 +5,8 @@ https://github.com/Kobold831/EnableGPlayWithPC
 
 チャレンジパッドで、Google Playの機能の一部を使えるようにするツールです。
 
+![](https://github.com/s1204IT/EnableGPlayWithPC/assets/52069677/c321dc9c-c11b-4026-844a-6c6b87670753)
+
 ---
 
 ### 開発終了のお知らせ

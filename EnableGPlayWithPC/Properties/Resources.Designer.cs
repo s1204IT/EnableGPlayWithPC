@@ -153,8 +153,8 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   {0} が見つかりません。
-        ///そのファイルが存在するかどうか確認してください。 に類似しているローカライズされた文字列を検索します。
+        ///   {0} が見つかりませんでした。
+        ///ファイルが存在しているか確認してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_File404 {
             get {

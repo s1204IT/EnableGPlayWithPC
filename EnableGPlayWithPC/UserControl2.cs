@@ -42,6 +42,13 @@ namespace EnableGPlayWithPC {
             textBox1.SelectionLength = 0;
             textBox1.SelectedText = "[" + DateTime.Now.ToString("HH:mm:ss") + "]  " + logText + "\r\n";
         }
+        public void WriteMessageNoTime(string logText)
+        {
+            textBox1.SelectionStart = textBox1.Text.Length;
+            textBox1.SelectionLength = 0;
+            textBox1.SelectedText = " " + logText + "\r\n";
+
+        }
         public void WriteLine() {
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;

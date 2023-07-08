@@ -38,15 +38,16 @@ namespace EnableGPlayWithPC {
 
         private void ShowErrorMessage(string str) {
             UserControl2.getInstance().StopProgress();
-            UserControl2.getInstance().SetMessage("エラーが発生しました");
-            UserControl2.getInstance().WriteLog(str);
+            UserControl2.getInstance().WriteLine();
+            UserControl2.getInstance().SetMessage("エラーが発生しました\r\n");
+            UserControl2.getInstance().WriteMessageNoTime(str);
         }
 
         private void ShowCompleteMessage() {
             UserControl2.getInstance().StopProgress();
             UserControl2.getInstance().SetMessage("完了しました");
-            UserControl2.getInstance().WriteLog("全ての処理がしました！\r\n");
-            UserControl2.getInstance().WriteLog("[OK]ボタンをクリックすると終了します");
+            UserControl2.getInstance().WriteMessageNoTime("全ての処理が完了しました！");
+            UserControl2.getInstance().WriteMessageNoTime("[OK]ボタンをクリックすると終了します");
         }
 
         public void ChangeUserControl() {
@@ -287,8 +288,6 @@ namespace EnableGPlayWithPC {
             foreach (string pkg in Packages.Package) {
                 try {
                     // 正確なパッケージ名で表示
-                    var list = new List<string>();
-                    list.AddRange(Packages.Package);
                     string pkgName = Packages.PackageName[Array.IndexOf(Packages.Package, pkg)];
                     ShowProcessDialog(4, pkgName);
                     packageManager.UninstallPackage(pkg);
@@ -310,8 +309,6 @@ namespace EnableGPlayWithPC {
             }
             int i = 0;
             Array.ForEach(apks, apk => {
-                var list = new List<string>();
-                list.AddRange(apks);
                 string pkgName = Packages.PackageName[i];
                 ShowProcessDialog(5, pkgName);
                 if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
