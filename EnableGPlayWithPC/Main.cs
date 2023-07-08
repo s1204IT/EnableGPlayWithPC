@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -43,8 +44,9 @@ namespace EnableGPlayWithPC {
 
         private void ShowCompleteMessage() {
             UserControl2.getInstance().StopProgress();
-            UserControl2.getInstance().SetMessage("完了");
-            UserControl2.getInstance().WriteLog("\"OK\"ボタンをクリックすると終了します");
+            UserControl2.getInstance().SetMessage("完了しました");
+            UserControl2.getInstance().WriteLog("全ての処理がしました！\r\n");
+            UserControl2.getInstance().WriteLog("[OK]ボタンをクリックすると終了します");
         }
 
         public void ChangeUserControl() {
@@ -70,12 +72,9 @@ namespace EnableGPlayWithPC {
             bool bl;
             string str, path, appDir, deviceName = "失敗しました";
 
-            // 処理ダイアログの表示
-            ShowProcessDialog(0, null, 0);
-
             try {
                 // ファイルが存在しなければエラー終了
-                ShowProcessDialog(1, null, 0);
+                ShowProcessDialog(1, null);
                 (path, bl) = IsCheckFileExists();
                 if (!bl) {
                     ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_File404, path));
@@ -84,7 +83,7 @@ namespace EnableGPlayWithPC {
                 }
 
                 // ADBが存在しなければエラー終了
-                ShowProcessDialog(2, null, 0);
+                ShowProcessDialog(2, null);
                 (appDir, bl) = StartAdbServer();
                 if (!bl) {
                     ShowErrorMessage(Properties.Resources.Dialog_Process_Error_Adb404);
@@ -93,11 +92,12 @@ namespace EnableGPlayWithPC {
                 }
 
                 // ADB接続を確認
-                ShowProcessDialog(3, null, 0);
+                ShowProcessDialog(3, null);
                 try {
                     ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
                     AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.product.model", AdbClient.Instance.GetDevices().First(), receiver);
                     deviceName = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
+                    UserControl2.getInstance().WriteLog("デバイスを検出しました：" + deviceName);
                 } catch (Exception) {
                     ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName));
                     this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
@@ -143,7 +143,7 @@ namespace EnableGPlayWithPC {
                 }
 
                 // 再インストールの試行
-                ShowProcessDialog(7, null, 0);
+                ShowProcessDialog(7, null);
                 if (!TryReInstallAPK(deviceData, deviceName, appDir)) {
                     ShowErrorMessage(Properties.Resources.Dialog_Process_Error_In);
                     this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
@@ -151,7 +151,7 @@ namespace EnableGPlayWithPC {
                 }
 
                 // 最終処理
-                ShowProcessDialog(8, null, 0);
+                ShowProcessDialog(8, null);
                 EndProcess(deviceData);
                 return;
             } catch (Exception) {
@@ -170,51 +170,47 @@ namespace EnableGPlayWithPC {
         }
 
         // 処理順にメッセージ変更
-        private void ShowProcessDialog(int process, string msg, int count) {
+        private void ShowProcessDialog(int process, string msg) {
+            void SetMessage(string message)
+            {
+                UserControl2.getInstance().WriteLog(message);
+                UserControl2.getInstance().SetMessage(message);
+            }
             switch (process) {
                 case 0:
-                    UserControl2.getInstance().WriteLog("処理しています...");
-                    UserControl2.getInstance().SetMessage("処理しています...");
+                    UserControl2.getInstance().WriteLine();
                     break;
 
                 case 1:
-                    UserControl2.getInstance().WriteLog("ファイルを確認しています...");
-                    UserControl2.getInstance().SetMessage("ファイルを確認しています...");
+                    SetMessage("ファイルを確認しています...");
                     break;
 
                 case 2:
-                    UserControl2.getInstance().WriteLog("ADB を確認しています...");
-                    UserControl2.getInstance().SetMessage("ADB を確認しています...");
+                    SetMessage("ADB を確認しています...");
                     break;
 
                 case 3:
-                    UserControl2.getInstance().WriteLog("デバイスを確認しています...");
-                    UserControl2.getInstance().SetMessage("デバイスを確認しています...");
+                    SetMessage("デバイスを確認しています...");
                     break;
 
                 case 4:
-                    UserControl2.getInstance().WriteLog(msg + "をアンインストールしています...\r\n");
-                    UserControl2.getInstance().SetMessage(msg + "をアンインストールしています...");
+                    SetMessage("｢" + msg + "｣ をアンインストールしています...");
                     break;
 
                 case 5:
-                    UserControl2.getInstance().WriteLog(msg + "をインストールしています...(" + count + "/4)\r\n");
-                    UserControl2.getInstance().SetMessage(msg + "をインストールしています...(" + count + "/4)");
+                    SetMessage("｢" + msg + "｣ をインストールしています...");
                     break;
 
                 case 6:
-                    UserControl2.getInstance().WriteLog(msg + "に権限を付与しています...");
-                    UserControl2.getInstance().SetMessage(msg + "に権限を付与しています...");
+                    SetMessage("｢" + msg + "｣ に権限を付与しています...");
                     break;
 
                 case 7:
-                    UserControl2.getInstance().WriteLog("GMSを再インストールしています...");
-                    UserControl2.getInstance().SetMessage("GMSを再インストールしています...");
+                    SetMessage("｢Google Play開発者サービス｣ を再インストールしています...");
                     break;
 
                 case 8:
-                    UserControl2.getInstance().WriteLog("最終処理をしています...");
-                    UserControl2.getInstance().SetMessage("最終処理をしています...");
+                    SetMessage("処理を完了しています...");
                     break;
 
                 default:
@@ -229,9 +225,9 @@ namespace EnableGPlayWithPC {
                     return (path, false);
                 }
             }
+            ShowProcessDialog(0, null);
             return (null, true);
         }
-
         // ADBの確認
         private (string, bool) StartAdbServer() {
             string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -243,6 +239,7 @@ namespace EnableGPlayWithPC {
             } catch (Exception) {
                 return (appDir, false);
             }
+            ShowProcessDialog(0, null);
             return (appDir, true);
         }
 
@@ -277,6 +274,7 @@ namespace EnableGPlayWithPC {
                 if (!BenesseTabs.Names.Contains(DeviceName)) {
                     return (DeviceName, false);
                 }
+                ShowProcessDialog(0, null);
                 return (DeviceName, true);
             } catch (Exception) {
                 return (null, false);
@@ -288,11 +286,16 @@ namespace EnableGPlayWithPC {
             PackageManager packageManager = new PackageManager(device);
             foreach (string pkg in Packages.Package) {
                 try {
-                    ShowProcessDialog(4, pkg, 0);
+                    // 正確なパッケージ名で表示
+                    var list = new List<string>();
+                    list.AddRange(Packages.Package);
+                    string pkgName = Packages.PackageName[Array.IndexOf(Packages.Package, pkg)];
+                    ShowProcessDialog(4, pkgName);
                     packageManager.UninstallPackage(pkg);
                 } catch (Exception) {
                 }
             }
+            ShowProcessDialog(0, null);
             return ("", true);
         }
 
@@ -305,9 +308,12 @@ namespace EnableGPlayWithPC {
             } else {
                 apks = Apks.NEO_GAppsInstallList(appDir);
             }
-            int i = 1;
+            int i = 0;
             Array.ForEach(apks, apk => {
-                ShowProcessDialog(5, apk, i);
+                var list = new List<string>();
+                list.AddRange(apks);
+                string pkgName = Packages.PackageName[i];
+                ShowProcessDialog(5, pkgName);
                 if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
                     // CT2
                     packageManager.InstallPackage(apk, false);
@@ -317,13 +323,14 @@ namespace EnableGPlayWithPC {
                 }
                 i++;
             });
+            ShowProcessDialog(0, null);
             return true;
         }
 
         // 権限付与
         private bool TryGrantPermissions(DeviceData device) {
             // Googleアカウントマネージャー に権限付与
-            ShowProcessDialog(6, Packages.GSFLogin, 0);
+            ShowProcessDialog(6, Packages.PackageName[0]);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSFLogin,
                         Permissions.GSFLogin,
@@ -333,7 +340,7 @@ namespace EnableGPlayWithPC {
                 }
             }
             // Googleサービスフレームワーク に権限付与
-            ShowProcessDialog(6, Packages.GSF, 0);
+            ShowProcessDialog(6, Packages.PackageName[1]);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GSF,
                         Permissions.GSF,
@@ -343,7 +350,7 @@ namespace EnableGPlayWithPC {
                 }
             }
             // Google Play開発者サービス に権限付与
-            ShowProcessDialog(6, Packages.GMS, 0);
+            ShowProcessDialog(6, Packages.PackageName[2]);
             {
                 bool result = AndroidDebugBridgeUtils.GrantPermissions(Packages.GMS,
                         Permissions.GMS,
@@ -353,16 +360,17 @@ namespace EnableGPlayWithPC {
                 }
             }
             // Play ストア に権限付与
-            ShowProcessDialog(6, Packages.Vending, 0);
+            ShowProcessDialog(6, Packages.PackageName[3]);
             AndroidDebugBridgeUtils.GrantPermissions(Packages.Vending,
                     Permissions.Vending,
                     device,
                     Handle);
 
+            ShowProcessDialog(0, null);
             return true;
         }
 
-        // APKの再インストール
+        // GMSの再インストール
         private bool TryReInstallAPK(DeviceData device, string DeviceName, string appDir) {
             PackageManager packageManager = new PackageManager(device);
             if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
@@ -372,12 +380,14 @@ namespace EnableGPlayWithPC {
                 // CT3/X/Z
                 AndroidDebugBridgeUtils.InstallPackage(device, Path.Combine(appDir, Apks.old_GMS));
             }
+            ShowProcessDialog(0, null);
             return true;
         }
 
         private void EndProcess(DeviceData device) {
             AdbClient.Instance.Reboot("", device);
             AdbClient.Instance.KillAdb();
+            ShowProcessDialog(0, null);
             ShowCompleteMessage();
             TaskDialog dialog = new TaskDialog {
                 Caption = "Enable GPlay With PC",

@@ -127,7 +127,7 @@
     <value>続行</value>
   </data>
   <data name="Dialog_Not_Benesse_Tab_Desc" xml:space="preserve">
-    <value>{0}は動作確認済みのチャレンジパッドではありません。
+    <value>{0} はチャレンジパッドではありません。
 それでも実行しますか。</value>
   </data>
   <data name="Dialog_Not_Benesse_Tab_Inst" xml:space="preserve">
@@ -176,7 +176,7 @@ adb.exe が存在するかどうか確認してください。</value>
     <value>処理中に何らかのエラーが発生しました。</value>
   </data>
   <data name="Dialog_Successed_Desc" xml:space="preserve">
-    <value>Google の機能は有効化されました！
+    <value>Google の機能がインストールされました！
 
 デバイスは再起動中です。</value>
   </data>
@@ -184,17 +184,11 @@ adb.exe が存在するかどうか確認してください。</value>
     <value>成功しました！</value>
   </data>
   <data name="Dialog_TooManyDevices_Desc" xml:space="preserve">
-    <value>接続されているデバイスが多すぎます。
+    <value>２台以上のデバイスが接続されています。
 ひとつのデバイスのみ接続してください。</value>
   </data>
   <data name="Dialog_TooManyDevices_Inst" xml:space="preserve">
-    <value>接続されているデバイスが多すぎます</value>
-  </data>
-  <data name="FileSelector_Extension" xml:space="preserve">
-    <value>.apk</value>
-  </data>
-  <data name="FileSelector_Title" xml:space="preserve">
-    <value>APK ファイルを開く</value>
+    <value>２台以上のデバイスが接続されています</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>バージョン : {0}

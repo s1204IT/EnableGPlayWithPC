@@ -12,5 +12,13 @@
             GMS,
             Vending
         };
+
+        internal static string[] PackageName = new string[]
+        {
+            "Googleアカウントマネージャー",
+            "Googleサービスフレームワーク",
+            "Google Play開発者サービス",
+            "Google Playストア"
+        };
     }
 }

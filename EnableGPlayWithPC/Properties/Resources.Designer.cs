@@ -88,7 +88,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   {0}は動作確認済みのチャレンジパッドではありません。
+        ///   {0} はチャレンジパッドではありません。
         ///それでも実行しますか。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Not_Benesse_Tab_Desc {
@@ -203,7 +203,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   Google の機能は有効化されました！
+        ///   Google の機能がインストールされました！
         ///
         ///デバイスは再起動中です。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -223,7 +223,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   接続されているデバイスが多すぎます。
+        ///   ２台以上のデバイスが接続されています。
         ///ひとつのデバイスのみ接続してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_TooManyDevices_Desc {
@@ -233,29 +233,11 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   接続されているデバイスが多すぎます に類似しているローカライズされた文字列を検索します。
+        ///   ２台以上のデバイスが接続されています に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_TooManyDevices_Inst {
             get {
                 return ResourceManager.GetString("Dialog_TooManyDevices_Inst", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   .apk に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string FileSelector_Extension {
-            get {
-                return ResourceManager.GetString("FileSelector_Extension", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   APK ファイルを開く に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string FileSelector_Title {
-            get {
-                return ResourceManager.GetString("FileSelector_Title", resourceCulture);
             }
         }
         
