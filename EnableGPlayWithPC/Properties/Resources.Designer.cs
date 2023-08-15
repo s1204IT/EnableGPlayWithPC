@@ -88,21 +88,21 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   {0} はチャレンジパッドではありません。
-        ///それでも実行しますか。 に類似しているローカライズされた文字列を検索します。
+        ///   Android5.0 未満は非対応です｡
+        ///EnableGPlayWithPC はご利用できません｡ に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Dialog_Not_Benesse_Tab_Desc {
+        internal static string Dialog_LevelLessThan_Desc {
             get {
-                return ResourceManager.GetString("Dialog_Not_Benesse_Tab_Desc", resourceCulture);
+                return ResourceManager.GetString("Dialog_LevelLessThan_Desc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   チャレンジパッドが見つかりませんでした に類似しているローカライズされた文字列を検索します。
+        ///   Android5.0 未満は非対応です｡ に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Dialog_Not_Benesse_Tab_Inst {
+        internal static string Dialog_LevelLessThan_Inst {
             get {
-                return ResourceManager.GetString("Dialog_Not_Benesse_Tab_Inst", resourceCulture);
+                return ResourceManager.GetString("Dialog_LevelLessThan_Inst", resourceCulture);
             }
         }
         

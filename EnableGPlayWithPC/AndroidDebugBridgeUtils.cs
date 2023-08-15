@@ -8,6 +8,7 @@ using SharpAdbClient;
 
 namespace EnableGPlayWithPC {
     internal static class AndroidDebugBridgeUtils {
+
         internal static bool IsPermissionGranted(string str) {
             string[] lines = str.Split('\n');
             if (lines.Where(s => s.StartsWith("Operation not allowed:")).Any()) {

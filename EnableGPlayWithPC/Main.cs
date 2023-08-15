@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -98,7 +97,7 @@ namespace EnableGPlayWithPC {
                     ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
                     AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.product.model", AdbClient.Instance.GetDevices().First(), receiver);
                     deviceName = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
-                    UserControl2.getInstance().WriteLog("デバイスを検出しました：" + deviceName);
+                    UserControl2.getInstance().WriteLog("端末を検出しました：" + deviceName);
                 } catch (Exception) {
                     ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName));
                     this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Adb, deviceName), this.Handle);
@@ -113,12 +112,20 @@ namespace EnableGPlayWithPC {
                     return;
                 }
 
-                // デバイス名を確認
-                (deviceName, bl) = IsCheckDeviceName(deviceData);
+                // Android 5.0 未満を除外
+                bl = IsCheckDeviceLevel(deviceData);
                 if (!bl) {
-                    ShowErrorMessage(string.Format(Properties.Resources.Dialog_Not_Benesse_Tab_Desc, deviceName));
-                    this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Not_Benesse_Tab_Desc, deviceName), this.Handle);
+                    ShowErrorMessage(Properties.Resources.Dialog_LevelLessThan_Desc);
+                    this.Invoke(new Action<string, string, IntPtr>(ShowDialog), (Properties.Resources.Dialog_LevelLessThan_Inst, Properties.Resources.Dialog_LevelLessThan_Desc), this.Handle);
                     return;
+                }
+
+                // Android 6.0以降に対しての警告
+                bl = WhetherLollipop(deviceData);
+                if (!bl) {
+                    UserControl2.getInstance().WriteLog("この端末は Android 6.0 以降のため､ Google サービスは正常に動作しない可能性があります｡\r\n");
+                } else {
+                    UserControl2.getInstance().WriteLine();
                 }
 
                 // アンインストールの試行
@@ -130,7 +137,7 @@ namespace EnableGPlayWithPC {
                 }
 
                 // インストールの試行
-                if (!TryInstallAPK(deviceData, deviceName, appDir)) {
+                if (!TryInstallAPK(deviceData, appDir)) {
                     ShowErrorMessage(Properties.Resources.Dialog_Process_Error_In);
                     this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
                     return;
@@ -145,7 +152,7 @@ namespace EnableGPlayWithPC {
 
                 // 再インストールの試行
                 ShowProcessDialog(7, null);
-                if (!TryReInstallAPK(deviceData, deviceName, appDir)) {
+                if (!TryReInstallAPK(deviceData, appDir)) {
                     ShowErrorMessage(Properties.Resources.Dialog_Process_Error_In);
                     this.Invoke(new Action<string, string, IntPtr>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, Properties.Resources.Dialog_Process_Error_In, this.Handle);
                     return;
@@ -191,7 +198,7 @@ namespace EnableGPlayWithPC {
                     break;
 
                 case 3:
-                    SetMessage("デバイスを確認しています...");
+                    SetMessage("端末を確認しています...");
                     break;
 
                 case 4:
@@ -258,27 +265,41 @@ namespace EnableGPlayWithPC {
             }
         }
 
-        // デバイス名の確認
-        private (string, bool) IsCheckDeviceName(DeviceData device) {
-            string DeviceName;
+        // APIレベルの検証
+        private bool IsCheckDeviceLevel(DeviceData device)
+        {
+            string DeviceLevelStr;
+            int DeviceLevel;
             try {
                 ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-
-                AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.product.model", device, receiver);
-
-                // 余計な改行は入れさせない
-                DeviceName = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
-
-                Console.WriteLine(DeviceName.Length);
-
-                // 出力が名前にあるか確認
-                if (!BenesseTabs.Names.Contains(DeviceName)) {
-                    return (DeviceName, false);
+                AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.version.sdk", device, receiver);
+                DeviceLevelStr= receiver.ToString().Substring(0, receiver.ToString().Length - 2);
+                int.TryParse(DeviceLevelStr, out DeviceLevel);
+                // Android 5.0未満の場合にエラー
+                if (DeviceLevel < 21) {
+                    return false;
                 }
-                ShowProcessDialog(0, null);
-                return (DeviceName, true);
+                return true;
             } catch (Exception) {
-                return (null, false);
+                return false;
+            }
+        }
+
+        // 5.x かどうか
+        private bool WhetherLollipop(DeviceData device)
+        {
+            string DeviceLevelStr;
+            int DeviceLevel;
+            try {
+                ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
+                AdbClient.Instance.ExecuteRemoteCommand($"getprop ro.build.version.sdk", device, receiver);
+                DeviceLevelStr = receiver.ToString().Substring(0, receiver.ToString().Length - 2);
+                int.TryParse(DeviceLevelStr, out DeviceLevel);
+                // Android 5.xで無い場合にfalse
+                return DeviceLevel < 23 ? true : false;
+            }
+            catch (Exception) {
+                return false;
             }
         }
 
@@ -288,8 +309,7 @@ namespace EnableGPlayWithPC {
             foreach (string pkg in Packages.Package) {
                 try {
                     // 正確なパッケージ名で表示
-                    string pkgName = Packages.PackageName[Array.IndexOf(Packages.Package, pkg)];
-                    ShowProcessDialog(4, pkgName);
+                    ShowProcessDialog(4, Packages.PackageName[Array.IndexOf(Packages.Package, pkg)]);
                     packageManager.UninstallPackage(pkg);
                 } catch (Exception) {
                 }
@@ -299,23 +319,24 @@ namespace EnableGPlayWithPC {
         }
 
         // APKのインストール
-        private bool TryInstallAPK(DeviceData device, string DeviceName, string appDir) {
+        private bool TryInstallAPK(DeviceData device, string appDir) {
             PackageManager packageManager = new PackageManager(device);
             string[] apks;
-            if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
+            if (WhetherLollipop(device)) {
+                // Android 5.x
                 apks = Apks.GAppsInstallList(appDir);
             } else {
-                apks = Apks.NEO_GAppsInstallList(appDir);
+                // Android 6.0 以降
+                apks = Apks.Old_GAppsInstallList(appDir);
             }
             int i = 0;
             Array.ForEach(apks, apk => {
-                string pkgName = Packages.PackageName[i];
-                ShowProcessDialog(5, pkgName);
-                if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
-                    // CT2
+                ShowProcessDialog(5, Packages.PackageName[i]);
+                if (WhetherLollipop(device)) {
+                    // 5.x
                     packageManager.InstallPackage(apk, false);
                 } else {
-                    // CT3/X/Z
+                    // 6.0+
                     AndroidDebugBridgeUtils.InstallPackage(device, apk);
                 }
                 i++;
@@ -368,13 +389,13 @@ namespace EnableGPlayWithPC {
         }
 
         // GMSの再インストール
-        private bool TryReInstallAPK(DeviceData device, string DeviceName, string appDir) {
+        private bool TryReInstallAPK(DeviceData device, string appDir) {
             PackageManager packageManager = new PackageManager(device);
-            if (!BenesseTabs.TARGET_MODEL.Contains(DeviceName)) {
-                // CT2
+            if (WhetherLollipop(device)) {
+                // 5.x
                 packageManager.InstallPackage(Path.Combine(appDir, Apks.GMS), true);
             } else {
-                // CT3/X/Z
+                // 6.0+
                 AndroidDebugBridgeUtils.InstallPackage(device, Path.Combine(appDir, Apks.old_GMS));
             }
             ShowProcessDialog(0, null);

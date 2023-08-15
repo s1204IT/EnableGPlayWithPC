@@ -2,21 +2,9 @@
     internal static class Permissions {
         internal static string Prefix = "android.permission.";
 
-        internal static string[] Vending = new string[]
+        internal static string[] GSFLogin = new string[]
         {
-            "PACKAGE_USAGE_STATS",
-            "BATTERY_STATS",
             "DUMP",
-            "GET_APP_OPS_STATS",
-            "INTERACT_ACROSS_USERS",
-            "WRITE_SECURE_SETTINGS"
-        };
-
-        internal static string[] GMS = new string[]
-        {
-            "INTERACT_ACROSS_USERS",
-            "PACKAGE_USAGE_STATS",
-            "GET_APP_OPS_STATS",
             "READ_LOGS"
         };
 
@@ -28,10 +16,22 @@
             "INTERACT_ACROSS_USERS"
         };
 
-        internal static string[] GSFLogin = new string[]
+        internal static string[] GMS = new string[]
         {
-            "DUMP",
+            "INTERACT_ACROSS_USERS",
+            "PACKAGE_USAGE_STATS",
+            "GET_APP_OPS_STATS",
             "READ_LOGS"
+        };
+
+        internal static string[] Vending = new string[]
+        {
+            "PACKAGE_USAGE_STATS",
+            "BATTERY_STATS",
+            "DUMP",
+            "GET_APP_OPS_STATS",
+            "INTERACT_ACROSS_USERS",
+            "WRITE_SECURE_SETTINGS"
         };
     }
 }

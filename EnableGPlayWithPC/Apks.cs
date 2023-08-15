@@ -14,7 +14,7 @@ namespace EnableGPlayWithPC {
             return files;
         }
 
-        internal static string[] NEO_GAppsInstallList(string appDir) {
+        internal static string[] Old_GAppsInstallList(string appDir) {
             string[] files = { Path.Combine(appDir, GSFLogin), Path.Combine(appDir, GSF), Path.Combine(appDir, old_GMS), Path.Combine(appDir, old_Vending) };
             return files;
         }

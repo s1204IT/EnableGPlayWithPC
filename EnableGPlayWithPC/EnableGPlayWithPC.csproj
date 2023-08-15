@@ -101,7 +101,6 @@
   <ItemGroup>
     <Compile Include="AndroidDebugBridgeUtils.cs" />
     <Compile Include="Apks.cs" />
-    <Compile Include="BenesseTabs.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
