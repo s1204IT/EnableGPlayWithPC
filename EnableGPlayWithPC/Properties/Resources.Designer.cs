@@ -130,11 +130,11 @@ namespace EnableGPlayWithPC.Properties {
         ///
         ///以下を確認してください：
         ///
-        ///・デバイスの接続
+        ///・端末の接続
         ///
         ///・このPCからのUSBデバッグの許可
         ///
-        ///取得したデバイス名：{0} に類似しているローカライズされた文字列を検索します。
+        ///取得した端末名：{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Adb {
             get {
@@ -223,7 +223,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ２台以上のデバイスが接続されています。
+        ///   ２台以上の端末が接続されています。
         ///ひとつのデバイスのみ接続してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_TooManyDevices_Desc {
@@ -233,7 +233,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ２台以上のデバイスが接続されています に類似しているローカライズされた文字列を検索します。
+        ///   ２台以上の端末が接続されています に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_TooManyDevices_Inst {
             get {

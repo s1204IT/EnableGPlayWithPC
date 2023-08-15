@@ -138,11 +138,11 @@
 
 以下を確認してください：
 
-・デバイスの接続
+・端末の接続
 
 ・このPCからのUSBデバッグの許可
 
-取得したデバイス名：{0}</value>
+取得した端末名：{0}</value>
   </data>
   <data name="Dialog_Process_Error_Adb404" xml:space="preserve">
     <value>adb.exe が見つかりません。
@@ -173,8 +173,8 @@ adb.exe が存在するかどうか確認してください。</value>
 
 デバイスは再起動中です。</value>
   </data>
-   <data name="Dialog_LevelLessThan_Inst" xml:space="preserve">
-	<value>Android5.0 未満は非対応です｡</value>
+  <data name="Dialog_LevelLessThan_Inst" xml:space="preserve">
+    <value>Android5.0 未満は非対応です｡</value>
   </data>
   <data name="Dialog_LevelLessThan_Desc" xml:space="preserve">
     <value>Android5.0 未満は非対応です｡
@@ -184,11 +184,11 @@ EnableGPlayWithPC はご利用できません｡</value>
     <value>成功しました！</value>
   </data>
   <data name="Dialog_TooManyDevices_Desc" xml:space="preserve">
-    <value>２台以上のデバイスが接続されています。
+    <value>２台以上の端末が接続されています。
 ひとつのデバイスのみ接続してください。</value>
   </data>
   <data name="Dialog_TooManyDevices_Inst" xml:space="preserve">
-    <value>２台以上のデバイスが接続されています</value>
+    <value>２台以上の端末が接続されています</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>バージョン : {0}

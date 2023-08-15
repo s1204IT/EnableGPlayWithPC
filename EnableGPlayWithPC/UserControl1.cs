@@ -17,7 +17,7 @@ namespace EnableGPlayWithPC {
             checkedListBox1.Enabled = false;
             checkedListBox1.SetItemCheckState(0, CheckState.Checked);
             writeConsole($"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).LegalCopyright}\r\n");
-            writeConsole("\"実行\"を押すとタブレット内にGMS系のアプリがインストールされます。\r\n処理が完了後、タブレットは自動的に再起動します。\r\n実行している間は絶対にタブレットに触らないでください！");
+            writeConsole("\"実行\"を押すと端末にGoogle系のアプリがインストールされます。\r\n処理が完了後、端末は再起動されます。\r\n実行している間は端末に触らないでください！");
         }
 
         void writeConsole(string text) {
