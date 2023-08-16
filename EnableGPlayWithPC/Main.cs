@@ -276,10 +276,7 @@ namespace EnableGPlayWithPC {
                 DeviceLevelStr= receiver.ToString().Substring(0, receiver.ToString().Length - 2);
                 int.TryParse(DeviceLevelStr, out DeviceLevel);
                 // Android 5.0未満の場合にエラー
-                if (DeviceLevel < 21) {
-                    return false;
-                }
-                return true;
+                return DeviceLevel < 21 ? false : true;
             } catch (Exception) {
                 return false;
             }
