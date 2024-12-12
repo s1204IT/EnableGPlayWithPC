@@ -9,8 +9,8 @@
 
         internal static string[] PackageNameList = [
             "Googleサービスフレームワーク",
-            "Google Play開発者サービス",
-            "Google Playストア"
+            "Google Play 開発者サービス",
+            "Google Play ストア"
         ];
     }
 }

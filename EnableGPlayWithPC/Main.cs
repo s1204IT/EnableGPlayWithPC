@@ -152,23 +152,7 @@ namespace EnableGPlayWithPC {
                     ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_In, str, errMsg));
                     Invoke(new Action<string, string>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_In, str, errMsg));
                     return;
-                }   
-
-                /* GAppsアンインストール試行して失敗すればエラー終了 */
-                (str, errMsg, bl) = TryUninstallAPK(deviceData);
-                if (!bl) {
-                    ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_Un, str, errMsg));
-                    Invoke(new Action<string, string>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_Un, str, errMsg));
-                    return;
-                }
-
-                /* GAppsインストール試行して失敗すればエラー終了 */
-                (bl, str, errMsg) = TryInstallAPK(deviceData, appDir);
-                if (!bl) {
-                    ShowErrorMessage(string.Format(Properties.Resources.Dialog_Process_Error_In, str, errMsg));
-                    Invoke(new Action<string, string>(ShowDialog), Properties.Resources.Dialog_Process_Error_Title, string.Format(Properties.Resources.Dialog_Process_Error_In, str, errMsg));
-                    return;
-                }
+                } 
 
                 /* GApps権限付与試行して失敗すればエラー終了 */
                 (bl, str) = TryGrantPermissions(deviceData);
@@ -229,20 +213,12 @@ namespace EnableGPlayWithPC {
                     SetMessage("デバイスを確認しています...");
                     break;
 
-                case 4:
-                    SetMessage("｢" + msg + "｣をアンインストールしています... (" + count + "/3)");
-                    break;
-
-                case 5:
-                    SetMessage("｢" + msg + "｣をインストールしています... (" + count + "/3)");
-                    break;
-
                 case 6:
                     SetMessage("｢" + msg + "｣に権限を付与しています... (" + count + "/3)");
                     break;
 
                 case 7:
-                    SetMessage("｢" + msg + "｣を上書きインストールしています... (" + count + "/3)");
+                    SetMessage("｢" + msg + "｣を上書きインストールしています... (" + count + "/2)");
                     break;
 
                 case 8:
@@ -354,51 +330,6 @@ namespace EnableGPlayWithPC {
 
             AndroidDebugBridgeUtils.StartActivity(deviceData, "com.saradabar.setupwarning/.MainActivity");
 
-            // EnableGservices をインストール
-            try {
-            pm.InstallPackage(Apks.EnableGServices, false);
-            } catch (Exception e) {
-                return (false, "EnableGServices", e.Message);
-            }
-
-            return (true, null, null);
-        }
-
-        /* GAppsのアンインストール試行 */
-        private (string, string, bool) TryUninstallAPK(DeviceData deviceData) {
-            var adbClient = new AdbClient();
-            PackageManager pm = new PackageManager(adbClient, deviceData);
-
-            foreach (string pkg in Packages.Package) {
-                try {
-                    ShowProcessDialog(4, Packages.PackageNameList[Array.IndexOf(Packages.Package, pkg)], Array.IndexOf(Packages.Package, pkg) + 1);
-                    if (AndroidDebugBridgeUtils.IsInstallPackage(deviceData, pkg)) {
-                        pm.UninstallPackage(pkg);
-                    }
-                } catch (Exception e) {
-                    return (Packages.PackageNameList[Array.IndexOf(Packages.Package, pkg)], e.Message, false);
-                }
-            }
-
-            return ("", "", true);
-        }
-
-        /* GAppsインストール試行 */
-        private (bool, string, string) TryInstallAPK(DeviceData deviceData, string appDir) {
-            int i = 0;
-            var adbClient = new AdbClient();
-            PackageManager pm = new PackageManager(adbClient, deviceData);
-            /* インストール */
-            try {
-                Array.ForEach(Apks.GAppsInstallList_2(appDir), apk => {
-                    ShowProcessDialog(5, Packages.PackageNameList[i], i + 1);
-                        pm.InstallPackage(apk, false);
-                    i++;
-                });
-            } catch (Exception e) {
-                return (false, Packages.PackageNameList[i], e.Message);
-            }
-
             return (true, null, null);
         }
 
@@ -417,12 +348,12 @@ namespace EnableGPlayWithPC {
         /* GApps上書きインストール試行 */
         /* 権限の関係で上書きインストールを行わないと付与されない */
         private (bool, string, string) TryReInstallAPK(DeviceData deviceData, string appDir) {
-            int i = 0;
+            int i = 1;
             var adbClient = new AdbClient();
             PackageManager pm = new PackageManager(adbClient, deviceData);
             try {
                 Array.ForEach(Apks.GAppsInstallList_2(appDir), apk => {
-                    ShowProcessDialog(7, Packages.PackageNameList[i], i + 1);
+                    ShowProcessDialog(7, Packages.PackageNameList[i], i);
                     pm.InstallPackage(apk, true);
                     i++;
                 });
@@ -439,9 +370,6 @@ namespace EnableGPlayWithPC {
             PackageManager pm = new PackageManager(adbClient, deviceData);
             ShowProcessDialog(8, null, 0);
 
-            // EnableGService を起動
-            AndroidDebugBridgeUtils.SendBroadcast(deviceData, "com.saradabar.intent.action.RUN_ENABLE_GSERV");
-
             /* SetupWarning のアンインストール */
             pm.UninstallPackage("com.saradabar.setupwarning");
 
@@ -456,7 +384,7 @@ namespace EnableGPlayWithPC {
         }
 
         private void Main_Load(object sender, EventArgs e) {
-            Text += "   Ver." + Assembly.GetExecutingAssembly().GetName().Version;
+            Text += "   Ver." + Assembly.GetExecutingAssembly().GetName().Version + "（システム上書き専用）";
         }
     }
 }

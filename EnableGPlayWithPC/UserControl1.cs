@@ -9,7 +9,7 @@ namespace EnableGPlayWithPC {
         public static UserControl1 instance;
 
         /* 実行リスト */
-        readonly string[] str = { "Googleサービスの有効化" };
+        readonly string[] str = { "既存システムへのGoogleサービスの修正" };
 
         public static UserControl1 GetInstance() {
             return instance;
@@ -18,8 +18,6 @@ namespace EnableGPlayWithPC {
         public UserControl1() {
             InitializeComponent();
             instance = this;
-            linkLabel1.Text = "開発者のページはここをクリックしてください。";
-            linkLabel1.Links.Add(8, 2, "");
             checkedListBox1.Items.AddRange(str);
             checkedListBox1.CheckOnClick = true;
             checkedListBox1.Enabled = false;
@@ -35,10 +33,6 @@ namespace EnableGPlayWithPC {
         public async void Button_Click(object sender, EventArgs e) {
             Main.GetInstance().ChangeUserControl();
             await (Task.Run(Main.GetInstance().TryEnableGoogleServices));
-        }
-
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start(@"https://github.com/Kobold831/EnableGPlayWithPC");
         }
     }
 }

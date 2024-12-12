@@ -3,9 +3,6 @@ using System.Windows.Forms;
 
 namespace EnableGPlayWithPC {
     static class Program {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
         [STAThread]
         static void Main() {
             Application.EnableVisualStyles();

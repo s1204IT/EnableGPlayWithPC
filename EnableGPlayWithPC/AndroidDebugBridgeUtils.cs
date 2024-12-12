@@ -63,50 +63,6 @@ namespace EnableGPlayWithPC {
         }
 
         /// <summary>
-        /// ADBからの文字列を調べて、インストールされているかどうかチェックする。
-        /// </summary>
-        /// <param name="str">パッケージ名</param>
-        /// <returns>インストールされているかどうか。</returns>
-        internal static bool IsInstallPackage(DeviceData deviceData, string str) {
-            var adbClient = new AdbClient();
-            var installCmd = $"pm list packages \"\"{str}\"\"";
-
-            ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-            adbClient.ExecuteRemoteCommand(installCmd, deviceData, receiver);
-
-            var lines = receiver.ToString().Split('\n');
-            if (lines.Where(s => s == "$\"package:{str}\"").Any()) {
-                /* package:で始まる行が少なくともひとつはある */
-                return true;
-            } else {
-                /* インストールされていない */
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// ブロードキャストを送信する。
-        /// </summary>
-        /// <param name="str">ACTION名</param>
-        /// <returns>成功したか。</returns>
-        internal static bool SendBroadcast(DeviceData deviceData, string str) {
-            var adbClient = new AdbClient();
-            var installCmd = $"am broadcast -a {str}";
-
-            ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-            adbClient.ExecuteRemoteCommand(installCmd, deviceData, receiver);
-
-            var lines = receiver.ToString().Split('\n');
-            if (lines.Where(s => s.StartsWith("Broadcast completed:")).Any()) {
-                /* Broadcast completed:で始まる行が少なくともひとつはある */
-                return true;
-            } else {
-                /* 失敗 */
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Activityを送信する。
         /// </summary>
         /// <param name="str">パッケージ名/Activityフルクラス名</param>

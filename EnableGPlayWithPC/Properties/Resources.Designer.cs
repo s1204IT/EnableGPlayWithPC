@@ -61,7 +61,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   adb\adb.exe に類似しているローカライズされた文字列を検索します。
+        ///   platform-tools\adb.exe に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string AdbPath {
             get {
@@ -70,7 +70,8 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ｢{0}｣ は対象端末ではありません。
+        ///   次の端末は対象端末ではありません：
+        ///{0}
         ///このソフトウェアは使用できません。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Not_Benesse_Tab_Desc {
@@ -80,7 +81,8 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ｢{0}｣ に権限を付与できませんでした。 に類似しているローカライズされた文字列を検索します。
+        ///   次のアプリに権限を付与できませんでした：
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_PermNotGranted_Desc {
             get {
@@ -94,7 +96,8 @@ namespace EnableGPlayWithPC.Properties {
         ///・デバイスの接続
         ///・このPCからのUSBデバッグの許可
         ///
-        ///取得したデバイス名：{0} に類似しているローカライズされた文字列を検索します。
+        ///取得したデバイス名：
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Adb {
             get {
@@ -103,9 +106,8 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ｢{0}｣ が見つかりません。
-        ///適切にファイルが展開されなかったかファイルが削除された可能性があります。
-        ///公式サイトから再ダウンロードしてください。 に類似しているローカライズされた文字列を検索します。
+        ///   次のファイルが見つかりませんでした：
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_Adb404 {
             get {
@@ -114,9 +116,8 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ｢{0}｣ が見つかりません。
-        ///適切にファイルが解凍されなかったかファイルが削除された可能性があります。
-        ///公式サイトから再ダウンロードしてください。 に類似しているローカライズされた文字列を検索します。
+        ///   次のファイルが見つかりませんでした：
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Process_Error_File404 {
             get {
@@ -146,22 +147,6 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   ｢{0}｣ をアンインストールできませんでした。
-        ///エラーが繰り返し発生する場合は開発者にお問い合わせください。
-        ///以下を確認してから再実行してください：
-        ///・アンインストールブロッカーが設定されていないこと
-        ///・デバイス管理者に設定されていないこと
-        ///
-        ///詳細情報：
-        ///{1} に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string Dialog_Process_Error_Un {
-            get {
-                return ResourceManager.GetString("Dialog_Process_Error_Un", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   予期しないエラーが発生しました。
         ///再実行してください。
         ///エラーが繰り返し発生する場合は開発者にお問い合わせください。
@@ -186,7 +171,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   Google の機能は有効化されました！
+        ///   Google の機能は修正されました！
         ///デバイスを再起動しました。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dialog_Successed_Desc {
@@ -217,7 +202,7 @@ namespace EnableGPlayWithPC.Properties {
         }
         
         /// <summary>
-        ///   バージョン : {0} / Kobold Ver.
+        ///   バージョン : {0} / Syuugo Ver.
         ///
         /// に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -229,9 +214,11 @@ namespace EnableGPlayWithPC.Properties {
         
         /// <summary>
         ///   
-        ///[実行] を押すと、Google サービスのインストールが開始されます。
-        ///タブレットは自動で再起動します。
-        ///処理中はタブレットに触れないでください！ に類似しているローカライズされた文字列を検索します。
+        ///[実行] を押すと、Google サービスの修正が行われます。
+        ///この機能は詳しい方以外使用しないでください。
+        ///尚、このソフトに依って発生した問題について一切の責任を負いません。
+        ///
+        ///開発：しゅーご に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Information_Message {
             get {
